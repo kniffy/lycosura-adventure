@@ -14,6 +14,8 @@
 
 ; https://tildas.org.
 
+(import (chicken io))	; we need read-line
+
 (define area
   (vector '1 '0 '1))
 
@@ -21,7 +23,12 @@
 ;(newline)
 
 (display "You're standing in front of some ruins \n")
-(display (read))
+(define userinput
+  (read-line (current-input-port) 10))
+
+(if (string-ci=? "hi" userinput)
+  (display "you said hi"))
+
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help
