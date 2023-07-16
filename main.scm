@@ -17,8 +17,11 @@
 (define area
   (vector '1 '0 '1))
 
-(display area)
-(newline)
+;(display area)	; for testing
+;(newline)
 
 (display "You're standing in front of some ruins \n")
 (display (read))
+; we need to define the list of actions the user can do
+; and read the users text:
+; north, south, east, west, xyzzy, look, help
