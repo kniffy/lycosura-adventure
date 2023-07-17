@@ -15,11 +15,8 @@
 ; https://tildas.org.
 
 (import (chicken io))	; we need read-line
-(import input-parse)
 (import simple-loops)
-(import srfi-1)
-(import linenoise)
-;(import srfi-13)	; maybe we need this in the future
+
 
 ; set up and definitions
 ; TODO: strings containing the descriptions, etc
@@ -27,31 +24,29 @@
   (vector '1 '0 '1))
 
 (display "You're standing in front of some ruins \n")
-(define userinput
-  (read-line (current-input-port)))
-
-(define userquit 0)
+;(define userinput
+;  (lambda (x) 
+(define (userinput z)
+  (read-line)
 
 (define actions
   (list "quit" "exit"))
 
+
 ; main loop here
-(do-while (not (string-ci=? "quit" userinput))
-  (read-text-line))
+(do-forever
+  (display (read-line))
+  )
 
-;(if (find userinput actions)
-;  (display "you matched a thing")
-;  (display " you didnt"))
-
-;(do-forever
-;  (find userinput actions))
-;	  (if (string-ci=? "quit" userinput)
-;	    (exit)))
-
-	 ; (if (string-ci=? "hi" userinput)
-	  ;  (display "you said hi\n")
-	   ; (display "you didnt say hi\n")))
-
+;(let loop ((l (linenoise "> ")))
+;  (cond ((scan-input-lines '("quit"))
+;	 (void)
+;	 "Bye!")
+;	(else
+;	  (display l)
+;	  (newline)
+;	  (history-add l)
+;	  (loop (linenoise "> ")))))
 
 
 ; we need to define the list of actions the user can do
