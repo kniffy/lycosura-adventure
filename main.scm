@@ -37,7 +37,13 @@ the Maiden. But whereas the real name of the Maiden is Persephone, as Homer
 and Pamphos before him say in their poems, the real name of the Mistress I am
 afraid to write to the uninitiated
 
-  -Pausanias")
+  -Pausanias\n\n go south to begin")
+
+(define text001 "You're at the start of a winding road, you can see it goes
+uphill, but there are trees blocking all view of whats beyond.")
+(define text002 "Why even go down this? It doesn't seem scary; just pointless.
+Turning over rocks can never lead to good, as far as I know, but I'm just
+gone.")
 
 ; map setup
 ; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
