@@ -20,16 +20,54 @@
 	(srfi-69)
 	(scheme file))
 
-; set up and definitions
-; TODO: strings containing the descriptions, etc
-(define area
-  (vector '1 '0 '1))
+; text
+(define banner
+  "\n\n  There was a city said to be the oldest in the world: Lycosura. the most
+notable remains of it are the ruins of the Temple of Despoina
 
+... beside the temple of the Mistress on the right is what is called the Hall,
+where the Arcadians celebrate Mysteries, and sacrifice to the Mistress many
+victims in generous fashion. Every man of them sacrifices what he possesses.
+But he does not cut the throats of the victims, as is done in other
+sacrifices; each man chops off a limb of the sacrifice, just that which
+happens to come to hand. This Mistress the Arcadians worship more than any
+other god, declaring that she is a daughter of Poseidon and Demeter. Mistress
+is her surname among the many, just as they surname Demeter's daughter by Zeus
+the Maiden. But whereas the real name of the Maiden is Persephone, as Homer
+and Pamphos before him say in their poems, the real name of the Mistress I am
+afraid to write to the uninitiated
+
+  -Pausanias")
+
+; map setup
+; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
+(define make-matrix
+  (lambda (rows columns)
+    (do ((m (make-vector rows))
+	 (i 0 (+ i 1)))
+      ((= i rows) m)
+      (vector-set! m i (make-vector columns)))))
+
+; matrix-ref returns the jth element of the ith row.
+
+(define matrix-ref
+  (lambda (m i j)
+    (vector-ref (vector-ref m i) j)))
+
+; matrix-set! changes the jth element of the ith row.
+(define matrix-set!
+  (lambda (m i j x)
+    (vector-set! (vector-ref m i) j x)))
+
+; the actual construction of the array
+(define mmaapp (make-matrix 4 4))
+
+
+; commands
 (define user-commands '(north south east west xyzzy look help quit))
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help, quit
-; do we need a whole parser, or just a match in a lookup table?
 
 (define (quit)
   (exit))
@@ -43,6 +81,11 @@
      (print "zero"))
     ((1) ;;; Describe the item that the player is looking at.
      (print "one"))))
+
+(define (xyzzy)
+  (print "you did the thing!"))
+
+; end of commands
 
 (define (in item list)
   ;;; Tells you if an item is in a list or not
@@ -83,9 +126,8 @@
 ; main loop here
 (define (main)
   (begin
-    (print "Welcome to box land.\nThis is a prototype of a text adventure.")
+    (print banner)
     (display ">")
-    (repl)
-    ))
+    (repl)))
 
 (main)
