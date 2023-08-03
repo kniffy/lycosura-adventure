@@ -39,11 +39,16 @@ afraid to write to the uninitiated
 
   -Pausanias\n\n go south to begin")
 
+; format for text is textXY
 (define text001 "You're at the start of a winding road, you can see it goes
 uphill, but there are trees blocking all view of whats beyond.")
 (define text002 "Why even go down this? It doesn't seem scary; just pointless.
 Turning over rocks can never lead to good, as far as I know, but I'm just
 gone.")
+
+; global vars
+(define posX 0)
+(define posY 0)
 
 ; map setup
 ; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
@@ -55,7 +60,6 @@ gone.")
       (vector-set! m i (make-vector columns)))))
 
 ; matrix-ref returns the jth element of the ith row.
-
 (define matrix-ref
   (lambda (m i j)
     (vector-ref (vector-ref m i) j)))
@@ -66,11 +70,11 @@ gone.")
     (vector-set! (vector-ref m i) j x)))
 
 ; the actual construction of the array
-(define mmaapp (make-matrix 4 4))
+(define mmaapp (make-matrix 5 5))
 
 
 ; commands
-(define user-commands '(north south east west xyzzy look help quit))
+(define user-commands '(go north south east west xyzzy look help quit))
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help, quit
@@ -80,6 +84,17 @@ gone.")
 
 (define (help)
   (print "You can\n" user-commands))
+
+(define (go . direction)
+  (lambda (direction)
+    (if (string-ci=? direction north)
+      (if (= (matrix-ref (+ posX 1)))
+	(+ posX 1)
+	(print "you went north"))
+      (print "you cant go north"))))
+
+(define (north)
+  (print "this is the north var"))
 
 (define (look . location)
   (case (length location)
@@ -118,9 +133,9 @@ gone.")
 (define (filter-command command filter_list)
   ;;; Removes all words in the command that are not in the filter list. Preserves order of remaining words.
   (filter
-   (lambda (x)
-     (in x filter_list))
-   command))
+    (lambda (x)
+      (in x filter_list))
+    command))
 
 (define (repl)
   ;;; The REPL for user commands
