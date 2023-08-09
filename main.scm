@@ -74,7 +74,7 @@ gone.")
 
 
 ; commands
-(define user-commands '(go north south east west xyzzy look help quit))
+(define user-commands '( north south east west xyzzy look help quit))
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help, quit
@@ -85,16 +85,15 @@ gone.")
 (define (help)
   (print "You can\n" user-commands))
 
-(define (go . direction)
-  (lambda (direction)
-    (if (string-ci=? direction north)
-      (if (= (matrix-ref (+ posX 1)))
-	(+ posX 1)
-	(print "you went north"))
-      (print "you cant go north"))))
+;(define go
+;  (lambda (direction)
+;    (true? 
 
-(define (north)
-  (print "this is the north var"))
+
+;(define (north)
+;  (print "current pos:" posX posY)
+;  (go north)
+;  (print "new pos: " posX posY))
 
 (define (look . location)
   (case (length location)
@@ -107,6 +106,16 @@ gone.")
   (print "you did the thing!"))
 
 ; end of commands
+
+; bounds check
+(define (checkposition)
+  (lambda (posX posY)
+    (cond
+      ((< posX 0) (void))
+      ((< posY 0) (void))
+      ((> posX 4) (void))
+      ((> posY 4) (void))
+      (display "end?"))))
 
 (define (in item list)
   ;;; Tells you if an item is in a list or not
