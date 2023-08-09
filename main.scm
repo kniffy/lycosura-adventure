@@ -72,6 +72,7 @@ gone.")
 ; the actual construction of the array
 (define mmaapp (make-matrix 5 5))
 
+(define directions)
 
 ; commands
 (define user-commands '( north south east west xyzzy look help quit))
@@ -85,15 +86,13 @@ gone.")
 (define (help)
   (print "You can\n" user-commands))
 
-;(define go
-;  (lambda (direction)
-;    (true? 
-
-
-;(define (north)
-;  (print "current pos:" posX posY)
-;  (go north)
-;  (print "new pos: " posX posY))
+(define (go . direction)
+  (case (length direction)
+    ((0) ; didnt type a direction
+     (print "go where?"))
+    ((not 0)
+     (lambda (direction)
+       (void)))))
 
 (define (look . location)
   (case (length location)
