@@ -78,10 +78,11 @@ gone.")
 ; the actual construction of the array
 ; todo program the rooms - 0 for empty
 ;(define mmaapp (make-matrix 5 5))
-(define mmaapp '#(#(1 1 1 1)
-		  #(1 1 1 1)
-		  #(1 1 1 1)
-		  #(1 1 1 1)))
+(define mmaapp '#(#(1 1 1 1 1)
+		  #(1 1 1 1 1)
+		  #(0 1 1 1 1)
+		  #(1 1 1 1 1)
+		  #(1 1 1 1 1)))
 
 ; commands
 ; we must define the whole list first
@@ -95,8 +96,12 @@ gone.")
 
 (define (north)
   (if (checkbounds (+ posX 1) posY)
-    (set! posX (+ posX 1))
-    (print "cant go north")))
+    (if (not (zero? (matrix-ref mmaapp (+ posX 1) posY)))
+      (begin (print "moving..")
+	     (set! posX (+ posX 1)))
+      (print "cant go north"))
+    (print "out of bounds")))
+
 (define (south)
   (if (checkbounds (- posX 1) posY)
     (set! posX (- posX 1))
