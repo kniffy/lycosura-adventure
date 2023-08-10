@@ -51,6 +51,8 @@ Turning over rocks can never lead to good, as far as I know, but I'm just
 gone.")
 
 ; global vars
+
+; initial starting position
 (define posX 0)
 (define posY 0)
 
