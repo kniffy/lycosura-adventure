@@ -12,6 +12,10 @@
 ; when compiled and placed in /bin or similar, it is meant to be called
 ; as a user's login shell
 
+; bits taken from:
+; https://github.com/W1r3W0lf/textAdventure/blob/master/prototypes/box_land/box.scm
+; https://github.com/naver/lispe/blob/master/examples/patterns/minizork_en.lisp
+
 ; https://tildas.org.
 
 (import (r7rs)
@@ -70,15 +74,16 @@ gone.")
     (vector-set! (vector-ref m i) j x)))
 
 ; the actual construction of the array
-(define mmaapp (make-matrix 5 5))
-
-;(define directions)
+; todo program the rooms - 0 for empty
+;(define mmaapp (make-matrix 5 5))
+(define mmaapp '#(#(1 1 1 1)
+		  #(1 1 1 1)
+		  #(1 1 1 1)
+		  #(1 1 1 1)))
 
 ; commands
+; we must define the whole list first
 (define user-commands '(north south east west xyzzy look help quit))
-; we need to define the list of actions the user can do
-; and read the users text:
-; north, south, east, west, xyzzy, look, help, quit
 
 (define (quit)
   (exit))
