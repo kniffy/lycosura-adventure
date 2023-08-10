@@ -72,13 +72,10 @@ gone.")
 ; the actual construction of the array
 (define mmaapp (make-matrix 5 5))
 
-(define directions)
-;(define (south)
-;  (display "can you see this"))
-
+;(define directions)
 
 ; commands
-(define user-commands '( go south xyzzy look help quit))
+(define user-commands '(north south east west xyzzy look help quit))
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help, quit
@@ -89,13 +86,22 @@ gone.")
 (define (help)
   (print "You can\n" user-commands))
 
-(define (go . direction)
-  (case (length direction)
-    ((0) ; didnt type a direction
-     (print "go where?")))
-  (if (string-ci=? "south" 'direction)
-    (display "going south")
-    (set! posY (- posY 1))))
+(define (north)
+  (if (checkbounds (+ posX 1) posY)
+    (set! posX (+ posX 1))
+    (print "cant go north")))
+(define (south)
+  (if (checkbounds (- posX 1) posY)
+    (set! posX (- posX 1))
+    (print "cant go south")))
+(define (east)
+  (if (checkbounds posX (+ posY 1))
+    (set! posY (+ posY 1))
+    (print "cant go east")))
+(define (west)
+  (if (checkbounds posX (- posY 1))
+    (set! posY (- posY 1))
+    (print "cant go west")))
 
 (define (look . location)
   (case (length location)
@@ -110,14 +116,14 @@ gone.")
 ; end of commands
 
 ; bounds check
-(define (checkposition)
-  (lambda (posX posY)
+(define checkbounds
+  (lambda (x y)
     (cond
-      ((< posX 0) (void))
-      ((< posY 0) (void))
-      ((> posX 4) (void))
-      ((> posY 4) (void))
-      (display "end?"))))
+      ((< x 0) '#f)
+      ((< y 0) '#f)
+      ((> x 4) '#f)
+      ((> y 4) '#f)
+      ('#t))))
 
 (define (in item list)
   ;;; Tells you if an item is in a list or not
@@ -162,4 +168,4 @@ gone.")
     (display ">")
     (repl)))
 
-(main)
+;(main)
