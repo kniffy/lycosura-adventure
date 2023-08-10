@@ -73,9 +73,12 @@ gone.")
 (define mmaapp (make-matrix 5 5))
 
 (define directions)
+;(define (south)
+;  (display "can you see this"))
+
 
 ; commands
-(define user-commands '( north south east west xyzzy look help quit))
+(define user-commands '( go south xyzzy look help quit))
 ; we need to define the list of actions the user can do
 ; and read the users text:
 ; north, south, east, west, xyzzy, look, help, quit
@@ -89,10 +92,10 @@ gone.")
 (define (go . direction)
   (case (length direction)
     ((0) ; didnt type a direction
-     (print "go where?"))
-    ((not 0)
-     (lambda (direction)
-       (void)))))
+     (print "go where?")))
+  (if (string-ci=? "south" 'direction)
+    (display "going south")
+    (set! posY (- posY 1))))
 
 (define (look . location)
   (case (length location)
