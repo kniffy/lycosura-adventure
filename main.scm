@@ -58,12 +58,12 @@ gone.")
 
 ; map setup
 ; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
-(define make-matrix
-  (lambda (rows columns)
-    (do ((m (make-vector rows))
-	 (i 0 (+ i 1)))
-      ((= i rows) m)
-      (vector-set! m i (make-vector columns)))))
+;(define make-matrix
+;  (lambda (rows columns)
+;    (do ((m (make-vector rows))
+;	 (i 0 (+ i 1)))
+;      ((= i rows) m)
+;      (vector-set! m i (make-vector columns)))))
 
 ; matrix-ref returns the jth element of the ith row.
 (define matrix-ref
@@ -71,9 +71,9 @@ gone.")
     (vector-ref (vector-ref m i) j)))
 
 ; matrix-set! changes the jth element of the ith row.
-(define matrix-set!
-  (lambda (m i j x)
-    (vector-set! (vector-ref m i) j x)))
+;(define matrix-set!
+;  (lambda (m i j x)
+;    (vector-set! (vector-ref m i) j x)))
 
 ; the actual construction of the array
 ; todo program the rooms - 0 for empty
@@ -137,17 +137,17 @@ gone.")
       ((> y 4) '#f)
       ('#t))))
 
-(define (in item list)
-  ;;; Tells you if an item is in a list or not
-  (cond ((member item list) #t) (else #f)))
+;(define (in item list)
+;  ;;; Tells you if an item is in a list or not
+;  (cond ((member item list) #t) (else #f)))
 
-(define (set-alist-value key new-value alist)
-  ;;; Return an alist with the updated value
-  (alist-cons key (list new-value) (alist-delete key alist)))
+;(define (set-alist-value key new-value alist)
+;  ;;; Return an alist with the updated value
+;  (alist-cons key (list new-value) (alist-delete key alist)))
 
-(define (value item alist)
-  ;;; Returns the value from an alist
-  (cadr (assoc item alist)))
+;(define (value item alist)
+;  ;;; Returns the value from an alist
+;  (cadr (assoc item alist)))
 
 (define (get-command)
   ;;; Gets the command from the user and turns it into a list
