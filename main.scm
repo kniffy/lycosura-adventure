@@ -58,22 +58,11 @@ gone.")
 
 ; map setup
 ; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
-;(define make-matrix
-;  (lambda (rows columns)
-;    (do ((m (make-vector rows))
-;	 (i 0 (+ i 1)))
-;      ((= i rows) m)
-;      (vector-set! m i (make-vector columns)))))
 
 ; matrix-ref returns the jth element of the ith row.
 (define matrix-ref
   (lambda (m i j)
     (vector-ref (vector-ref m i) j)))
-
-; matrix-set! changes the jth element of the ith row.
-;(define matrix-set!
-;  (lambda (m i j x)
-;    (vector-set! (vector-ref m i) j x)))
 
 ; the actual construction of the array
 ; todo program the rooms - 0 for empty
@@ -96,23 +85,31 @@ gone.")
 
 (define (north)
   (if (checkbounds (+ posX 1) posY)
-    (if (not (zero? (matrix-ref mmaapp (+ posX 1) posY)))
+    (if (lookahead (+ posX 1) posY)
       (begin (print "moving..")
 	     (set! posX (+ posX 1)))
       (print "cant go north"))
     (print "out of bounds")))
-
 (define (south)
   (if (checkbounds (- posX 1) posY)
-    (set! posX (- posX 1))
+    (if (lookahead (- posX 1) posY)
+      (begin (print "moving..")
+	     (set! posX (- posX 1)))
+      (print "cant go south"))
     (print "cant go south")))
 (define (east)
   (if (checkbounds posX (+ posY 1))
-    (set! posY (+ posY 1))
+    (if (lookahead posX (+ posY 1))
+      (begin (print "moving..")
+	     (set! posY (+ posY 1)))
+      (print "cant go east"))
     (print "cant go east")))
 (define (west)
   (if (checkbounds posX (- posY 1))
-    (set! posY (- posY 1))
+    (if (lookahead posX (- posY 1))
+      (begin (print "moving..")
+	     (set! posY (- posY 1)))
+      (print "cant go west"))
     (print "cant go west")))
 
 (define (look . location)
@@ -126,6 +123,11 @@ gone.")
   (print "you did the thing!"))
 
 ; end of commands
+
+; lookahead check
+(define lookahead
+  (lambda (x y)
+    (cond ((zero? (matrix-ref mmaapp x y)) '#f))))
 
 ; bounds check
 (define checkbounds
@@ -141,13 +143,13 @@ gone.")
   ;;; Tells you if an item is in a list or not
   (cond ((member item list) #t) (else #f)))
 
-;(define (set-alist-value key new-value alist)
-;  ;;; Return an alist with the updated value
-;  (alist-cons key (list new-value) (alist-delete key alist)))
+(define (set-alist-value key new-value alist)
+  ;;; Return an alist with the updated value
+  (alist-cons key (list new-value) (alist-delete key alist)))
 
-;(define (value item alist)
-;  ;;; Returns the value from an alist
-;  (cadr (assoc item alist)))
+(define (value item alist)
+  ;;; Returns the value from an alist
+  (cadr (assoc item alist)))
 
 (define (get-command)
   ;;; Gets the command from the user and turns it into a list
