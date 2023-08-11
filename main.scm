@@ -137,9 +137,9 @@ gone.")
       ((> y 4) '#f)
       ('#t))))
 
-;(define (in item list)
-;  ;;; Tells you if an item is in a list or not
-;  (cond ((member item list) #t) (else #f)))
+(define (in item list)
+  ;;; Tells you if an item is in a list or not
+  (cond ((member item list) #t) (else #f)))
 
 ;(define (set-alist-value key new-value alist)
 ;  ;;; Return an alist with the updated value
