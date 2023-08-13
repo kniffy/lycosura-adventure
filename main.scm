@@ -62,18 +62,17 @@ gone.")
 ; our text within the mmaapp array, and display it once we traverse
 
 ; matrix-ref returns the jth element of the ith row.
-(define matrix-ref
-  (lambda (m i j)
-    (vector-ref (vector-ref m i) j)))
+(define (matrix-ref m i j)
+  (vector-ref (vector-ref m i) j))
 
 ; the actual construction of the array
 ; todo program the rooms - 0 for empty
 ;(define mmaapp (make-matrix 5 5))
-(define mmaapp '#(#(1 1 1 1 1)
+(define mmaapp `#(#(1 1 1 1 1)
 		  #(1 1 1 1 1)
 		  #(0 1 1 1 1)
 		  #(1 1 1 1 1)
-		  #(1 1 1 1 1)))
+		  #(,text001 1 1 1 1)))
 
 ; commands
 ; we must define the whole list first
@@ -89,22 +88,26 @@ gone.")
 (define (north)
   (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
       (begin (print "moving..")
-	     (set! posX (+ posX 1)))
+	     (set! posX (+ posX 1))
+	     (iuyt))
       (print "cant go north")))
 (define (south)
   (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
       (begin (print "moving..")
-	     (set! posX (- posX 1)))
+	     (set! posX (- posX 1))
+	     (iuyt))
       (print "cant go south")))
 (define (east)
   (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
       (begin (print "moving..")
-	     (set! posY (+ posY 1)))
+	     (set! posY (+ posY 1))
+	     (iuyt))
       (print "cant go east")))
 (define (west)
   (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
       (begin (print "moving..")
-	     (set! posY (- posY 1)))
+	     (set! posY (- posY 1))
+	     (iuyt))
       (print "cant go west")))
 
 (define (look . location)
@@ -120,23 +123,29 @@ gone.")
 ; end of commands
 
 ; return value linked to given x y coordinates
-(define poiu
-  (lambda (x y)
-    (cdr (assoc (cons x y) alist))))
+;(define (poiu x y)
+;  (cdr (assoc (cons x y) alist)))
+
+(define (iuyt)
+  (if (string? (matrix-ref mmaapp posX posY))
+    (print (matrix-ref mmaapp posX posY))
+    (print "no text here?")))
 
 ; lookahead check
-(define lookahead
-  (lambda (x y) (cond ((zero? (matrix-ref mmaapp x y)) '#f))))
+(define (lookahead x y)
+  (cond
+    ((string? (matrix-ref mmaapp x y)) '#t)
+    ((zero? (matrix-ref mmaapp x y)) '#f)
+    ((not (zero? (matrix-ref mmaapp x y))) (void))))
 
 ; bounds check
-(define checkbounds
-  (lambda (x y)
-    (cond
-      ((< x 0) '#f)
-      ((< y 0) '#f)
-      ((> x 4) '#f)
-      ((> y 4) '#f)
-      ('#t))))
+(define (checkbounds x y)
+  (cond
+    ((< x 0) '#f)
+    ((< y 0) '#f)
+    ((> x 4) '#f)
+    ((> y 4) '#f)
+    ('#t)))
 
 (define (in item list)
   ;;; Tells you if an item is in a list or not
@@ -181,4 +190,4 @@ gone.")
     (display ">")
     (repl)))
 
-;(main)
+(main)
