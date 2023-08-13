@@ -41,9 +41,9 @@ the Maiden. But whereas the real name of the Maiden is Persephone, as Homer
 and Pamphos before him say in their poems, the real name of the Mistress I am
 afraid to write to the uninitiated
 
-  -Pausanias\n\n go south to begin")
+  -Pausanias\n\n")
 
-; format for text is textXY
+; variable names here are arbitrary, but we will try to follow text<X><Y>
 (define text001 "You're at the start of a winding road, you can see it goes
 uphill, but there are trees blocking all view of whats beyond.")
 (define text002 "Why even go down this? It doesn't seem scary; just pointless.
@@ -57,7 +57,9 @@ gone.")
 (define posY 0)
 
 ; map setup
-; we need a 2d array, so here's some matrix code from the Scheme textbook :^)
+; we define a 2d array, and use a ref from the scheme textbook :^)
+; the room validity checking is only testing for zero, so we define
+; our text within the mmaapp array, and display it once we traverse
 
 ; matrix-ref returns the jth element of the ith row.
 (define matrix-ref
@@ -83,34 +85,27 @@ gone.")
 (define (help)
   (print "You can\n" user-commands))
 
+;todo can remove the begin and moving print, need room text displaying first
 (define (north)
-  (if (checkbounds (+ posX 1) posY)
-    (if (lookahead (+ posX 1) posY)
+  (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
       (begin (print "moving..")
 	     (set! posX (+ posX 1)))
-      (print "cant go north"))
-    (print "out of bounds")))
+      (print "cant go north")))
 (define (south)
-  (if (checkbounds (- posX 1) posY)
-    (if (lookahead (- posX 1) posY)
+  (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
       (begin (print "moving..")
 	     (set! posX (- posX 1)))
-      (print "cant go south"))
-    (print "cant go south")))
+      (print "cant go south")))
 (define (east)
-  (if (checkbounds posX (+ posY 1))
-    (if (lookahead posX (+ posY 1))
+  (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
       (begin (print "moving..")
 	     (set! posY (+ posY 1)))
-      (print "cant go east"))
-    (print "cant go east")))
+      (print "cant go east")))
 (define (west)
-  (if (checkbounds posX (- posY 1))
-    (if (lookahead posX (- posY 1))
+  (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
       (begin (print "moving..")
 	     (set! posY (- posY 1)))
-      (print "cant go west"))
-    (print "cant go west")))
+      (print "cant go west")))
 
 (define (look . location)
   (case (length location)
@@ -124,10 +119,14 @@ gone.")
 
 ; end of commands
 
+; return value linked to given x y coordinates
+(define poiu
+  (lambda (x y)
+    (cdr (assoc (cons x y) alist))))
+
 ; lookahead check
 (define lookahead
-  (lambda (x y)
-    (cond ((zero? (matrix-ref mmaapp x y)) '#f))))
+  (lambda (x y) (cond ((zero? (matrix-ref mmaapp x y)) '#f))))
 
 ; bounds check
 (define checkbounds
