@@ -25,34 +25,9 @@
 	(scheme file))
 
 ; text
-(define banner
-  "\n\n  There was a city said to be the oldest in the world: Lycosura. the most
-notable remains of it are the ruins of the Temple of Despoina
-
-... beside the temple of the Mistress on the right is what is called the Hall,
-where the Arcadians celebrate Mysteries, and sacrifice to the Mistress many
-victims in generous fashion. Every man of them sacrifices what he possesses.
-But he does not cut the throats of the victims, as is done in other
-sacrifices; each man chops off a limb of the sacrifice, just that which
-happens to come to hand. This Mistress the Arcadians worship more than any
-other god, declaring that she is a daughter of Poseidon and Demeter. Mistress
-is her surname among the many, just as they surname Demeter's daughter by Zeus
-the Maiden. But whereas the real name of the Maiden is Persephone, as Homer
-and Pamphos before him say in their poems, the real name of the Mistress I am
-afraid to write to the uninitiated
-
-  -Pausanias\n\n")
-
-; variable names here are arbitrary, but we will try to follow text<X><Y>
-(define text001 "You're at the start of a winding road, you can see it goes
-uphill, but there are trees blocking all view of whats beyond.")
-(define text002 "Why even go down this? It doesn't seem scary; just pointless.
-Turning over rocks can never lead to good, as far as I know, but I'm just
-gone.")
+(load "data.scm")
 
 ; global vars
-
-; initial starting position
 (define posX 0)
 (define posY 0)
 (define rude 0)
@@ -66,9 +41,6 @@ gone.")
 (define (matrix-ref m i j)
   (vector-ref (vector-ref m i) j))
 
-; the actual construction of the array
-; todo program the rooms - 0 for empty
-;(define mmaapp (make-matrix 5 5))
 (define mmaapp `#(#(1 1 1 1 1)
 		  #(1 1 1 1 1)
 		  #(0 1 1 1 1)
@@ -76,7 +48,7 @@ gone.")
 		  #(,text001 1 1 1 1)))
 
 ; commands
-; we must define the whole list first
+; we must define the whole list of valid cmds
 (define user-commands '(north south east west xyzzy look help quit))
 
 (define (quit)
@@ -124,23 +96,20 @@ gone.")
 
 ; end of commands
 
-; return value linked to given x y coordinates
-;(define (poiu x y)
-;  (cdr (assoc (cons x y) alist)))
+; boring functions
 
+; print the room text
 (define (iuyt)
   (if (string? (matrix-ref mmaapp posX posY))
     (print (matrix-ref mmaapp posX posY))
     (print "no text here?")))
 
-; lookahead check
 (define (lookahead x y)
   (cond
     ((string? (matrix-ref mmaapp x y)) '#t)
     ((zero? (matrix-ref mmaapp x y)) '#f)
     ((not (zero? (matrix-ref mmaapp x y))) (void))))
 
-; bounds check
 (define (checkbounds x y)
   (cond
     ((< x 0) '#f)
