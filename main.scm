@@ -40,12 +40,15 @@
 ; do we actually know how this is oriented?
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; bottom left corner is 4,0
-(define mmaapp `#(#(,text001 1 1 1 1 1)
-		  #(,text002 1 1 1 1 1)
-		  #(,text003 1 1 1 1 1)
-		  #(1 1 1 1 1 1)
-		  #(1 1 1 1 1 1)
-		  #(1 1 1 1 1 1)))
+(define mmaapp `#(#(,text001 0 0 0 0 0 0 0)	;0
+		  #(,text002 0 0 0 0 0 0 0)	;1
+		  #(,text003 0 0 0 0 0 0 0)	;2
+		  #(0 0 0 0 0 0 0 0)		;3
+		  #(0 0 0 0 0 0 0 0)		;4
+		  #(0 0 0 0 0 0 0 0)		;5
+		  #(0 0 0 0 0 0 0 0)		;6
+		  #(0 0 0 0 0 0 0 0)))		;7
+;		    0 1 2 3 4 5 6 7
 
 ; commands
 ; we must define the whole list of valid cmds
@@ -115,8 +118,8 @@
   (cond
     ((< x 0) '#f)
     ((< y 0) '#f)
-    ((> x 5) '#f)
-    ((> y 5) '#f)
+    ((> x 7) '#f)
+    ((> y 7) '#f)
     ('#t)))
 
 ; matrix-ref returns the jth element of the ith row.
