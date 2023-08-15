@@ -37,15 +37,15 @@
 ; the room validity checking is only testing for zero, so we define
 ; our text within the mmaapp array, and display it once we traverse
 
-; matrix-ref returns the jth element of the ith row.
-(define (matrix-ref m i j)
-  (vector-ref (vector-ref m i) j))
-
-(define mmaapp `#(#(1 1 1 1 1)
-		  #(1 1 1 1 1)
-		  #(0 1 1 1 1)
-		  #(1 1 1 1 1)
-		  #(,text001 1 1 1 1)))
+; do we actually know how this is oriented?
+; north seems to be pointing downward, and 0,0 seems to be the top left
+; bottom left corner is 4,0
+(define mmaapp `#(#(,text001 1 1 1 1 1)
+		  #(1 1 1 1 1 1)
+		  #(0 1 1 1 1 1)
+		  #(1 1 1 1 1 1)
+		  #(1 1 1 1 1 1)
+		  #(1 1 1 1 1 1)))
 
 ; commands
 ; we must define the whole list of valid cmds
@@ -118,6 +118,10 @@
     ((> y 4) '#f)
     ('#t)))
 
+; matrix-ref returns the jth element of the ith row.
+(define (matrix-ref m i j)
+  (vector-ref (vector-ref m i) j))
+
 (define (in item list)
   ;;; Tells you if an item is in a list or not
   (cond ((member item list) #t) (else #f)))
@@ -130,6 +134,7 @@
   ;;; Returns the value from an alist
   (cadr (assoc item alist)))
 
+; todo we need to check for #!eof or hope the user doesnt ctrl-D
 (define (get-command)
   ;;; Gets the command from the user and turns it into a list
   (map string->symbol (string-tokenize (string-downcase (read-line)))))
