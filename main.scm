@@ -41,8 +41,8 @@
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; bottom left corner is 4,0
 (define mmaapp `#(#(,text001 1 1 1 1 1)
-		  #(1 1 1 1 1 1)
-		  #(0 1 1 1 1 1)
+		  #(,text002 1 1 1 1 1)
+		  #(,text003 1 1 1 1 1)
 		  #(1 1 1 1 1 1)
 		  #(1 1 1 1 1 1)
 		  #(1 1 1 1 1 1)))
@@ -62,25 +62,25 @@
   (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
       (begin (print "moving..")
 	     (set! posX (+ posX 1))
-	     (iuyt))
+	     (ptext))
       (print "cant go north")))
 (define (south)
   (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
       (begin (print "moving..")
 	     (set! posX (- posX 1))
-	     (iuyt))
+	     (ptext))
       (print "cant go south")))
 (define (east)
   (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
       (begin (print "moving..")
 	     (set! posY (+ posY 1))
-	     (iuyt))
+	     (ptext))
       (print "cant go east")))
 (define (west)
   (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
       (begin (print "moving..")
 	     (set! posY (- posY 1))
-	     (iuyt))
+	     (ptext))
       (print "cant go west")))
 
 ; todo define look to print optional extra text for areas eg. the rude room
@@ -99,7 +99,7 @@
 ; boring functions
 
 ; print the room text
-(define (iuyt)
+(define (ptext)
   (if (string? (matrix-ref mmaapp posX posY))
     (print (matrix-ref mmaapp posX posY))
     (print "no text here?")))
@@ -110,12 +110,13 @@
     ((zero? (matrix-ref mmaapp x y)) '#f)
     ((not (zero? (matrix-ref mmaapp x y))) (void))))
 
+; note if the check is the same size as the map
 (define (checkbounds x y)
   (cond
     ((< x 0) '#f)
     ((< y 0) '#f)
-    ((> x 4) '#f)
-    ((> y 4) '#f)
+    ((> x 5) '#f)
+    ((> y 5) '#f)
     ('#t)))
 
 ; matrix-ref returns the jth element of the ith row.

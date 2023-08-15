@@ -1,36 +1,10 @@
-; this is a basic text walking sim, related to the Lycosurian Mysteries,
-; and meant to be played via telnet/ssh
-
-; it was planned to be a promotional tie in with the album release, but
-; the decision was made to cancel, given the basis of the project was a
-; deprecated python bbs daemon package, not to mention efforts needed to
-; be focused on actually finishing the music.. 
-
-; so here we are a couple years later, maybe listen to the music while
-; playing this :^)
-
-; when compiled and placed in /bin or similar, it is meant to be called
-; as a user's login shell
-
-; bits taken from:
-; https://github.com/W1r3W0lf/textAdventure/blob/master/prototypes/box_land/box.scm
-; https://github.com/naver/lispe/blob/master/examples/patterns/minizork_en.lisp
-
-; https://tildas.org.
-
-;(import (r7rs)
-;	(srfi-1)
-;	(srfi-13)
-;	(srfi-69)
-;	(scheme file))
-
 ; we define variables of the strings of text, which are unquoted and evaluated
 ; in the map array definition. should be pretty fast and efficient; we will
 ; not be reading from disk
 
 ; not entirely sure why this huge block actually works..
 (define banner
-  "\n\n  There was a city said to be the oldest in the world: Lycosura. the most
+"\n\n  There was a city said to be the oldest in the world: Lycosura. the most
 notable remains of it are the ruins of the Temple of Despoina
 
 ... beside the temple of the Mistress on the right is what is called the Hall,
@@ -47,10 +21,17 @@ afraid to write to the uninitiated
 
   -Pausanias\n\n")
 
-; variable names here are arbitrary, but we will try to follow text<X><Y>
+; variable names here are arbitrary, but important ones for specific rooms
+; will try to follow text<x><y> format
 (define text001 "You're at the start of a winding road, you can see it goes
-uphill, but there are trees blocking all view of whats beyond.")
-(define text002 "Why even go down this? It doesn't seem scary; just pointless.
+uphill, but there are trees blocking all view of whats beyond.
+
+Why even go down this? It doesn't seem scary; just pointless.
 Turning over rocks can never lead to good, as far as I know, but I'm just
 gone.")
+
+(define text002 "this is area 2")
+(define text003 "A turn is in the distance, still can't see beyond though.
+all the paths I could have gone down yet I'm on this one somehow; what were
+down those roads?")
 
