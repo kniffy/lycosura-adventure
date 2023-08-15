@@ -55,6 +55,7 @@ gone.")
 ; initial starting position
 (define posX 0)
 (define posY 0)
+(define rude 0)
 
 ; map setup
 ; we define a 2d array, and use a ref from the scheme textbook :^)
@@ -84,7 +85,7 @@ gone.")
 (define (help)
   (print "You can\n" user-commands))
 
-;todo can remove the begin and moving print, need room text displaying first
+; todo cleanup a bit
 (define (north)
   (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
       (begin (print "moving..")
@@ -110,6 +111,7 @@ gone.")
 	     (iuyt))
       (print "cant go west")))
 
+; todo define look to print optional extra text for areas eg. the rude room
 (define (look . location)
   (case (length location)
     ((0) ;;; Assume the player is asking about the current room
