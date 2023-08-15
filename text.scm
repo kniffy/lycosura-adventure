@@ -2,6 +2,8 @@
 ; in the map array definition. should be pretty fast and efficient; we will
 ; not be reading from disk
 
+; should we format to 80 col? or set strings as giant single lines
+
 ; not entirely sure why this huge block actually works..
 (define banner
 "\n\n  There was a city said to be the oldest in the world: Lycosura. the most
@@ -21,17 +23,17 @@ afraid to write to the uninitiated
 
   -Pausanias\n\n")
 
-; variable names here are arbitrary, but important ones for specific rooms
-; will try to follow text<x><y> format
-(define text001 "You're at the start of a winding road, you can see it goes
+; variable names here are arbitrary, but we'll try to follow the convention:
+; each tile area is assigned a number 1-64, refer to the chart for positioning
+; extra text syntax is text<num>-<b>
+(define text01 "You're at the start of a winding road, you can see it goes
 uphill, but there are trees blocking all view of whats beyond.
 
-Why even go down this? It doesn't seem scary; just pointless.
-Turning over rocks can never lead to good, as far as I know, but I'm just
-gone.")
+Why even go down this? It doesn't seem scary; just pointless. Turning over
+rocks can never lead to good, as far as I know, but I'm just gone.")
 
-(define text002 "this is area 2")
-(define text003 "A turn is in the distance, still can't see beyond though.
-all the paths I could have gone down yet I'm on this one somehow; what were
-down those roads?")
+(define text02 "this is area 2")
+(define text03 "A turn is in the distance, still can't see beyond though. All
+the paths I could have gone down yet I'm on this one somehow; what were down
+those roads?")
 

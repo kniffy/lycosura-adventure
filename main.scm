@@ -25,7 +25,7 @@
 	(scheme file))
 
 ; text
-(load "data.scm")
+(load "text.scm")
 
 ; global vars
 (define posX 0)
@@ -40,9 +40,9 @@
 ; do we actually know how this is oriented?
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; bottom left corner is 4,0
-(define mmaapp `#(#(,text001 0 0 0 0 0 0 0)	;0
-		  #(,text002 0 0 0 0 0 0 0)	;1
-		  #(,text003 0 0 0 0 0 0 0)	;2
+(define mmaapp `#(#(,text01 0 0 0 0 0 0 0)	;0
+		  #(,text02 0 0 0 0 0 0 0)	;1
+		  #(,text03 0 0 0 0 0 0 0)	;2
 		  #(0 0 0 0 0 0 0 0)		;3
 		  #(0 0 0 0 0 0 0 0)		;4
 		  #(0 0 0 0 0 0 0 0)		;5
