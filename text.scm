@@ -65,3 +65,13 @@ sight at whats ahead")
 but how is peace under stone?")
 
 (define text12 "It's very hot today, and humid.")
+
+(define text13 "It doesn't work like that. 10 more days til I'm one year older,
+in the valley - will the abyss look back")
+
+(define text14 "In the past it's like I was asleep, totally unaware of being
+so, but I can't even say when waking up happened, or if it even did happen,
+so I must still be asleep. I'm just gone.")
+
+(define text15 "A bit hungry now.")
+
