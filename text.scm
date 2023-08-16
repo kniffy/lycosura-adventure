@@ -30,10 +30,38 @@ afraid to write to the uninitiated
 uphill, but there are trees blocking all view of whats beyond.
 
 Why even go down this? It doesn't seem scary; just pointless. Turning over
-rocks can never lead to good, as far as I know, but I'm just gone.")
+rocks can never lead to good, as far as I know, but I'm just gone.\n\n")
 
-(define text02 "this is area 2")
-(define text03 "A turn is in the distance, still can't see beyond though. All
-the paths I could have gone down yet I'm on this one somehow; what were down
-those roads?")
+(define text02 "All the paths I could have gone down, yet I'm on this one
+somehow; what were down those roads?")
 
+(define text03 "A turn is in the distance, still can't see beyond though.")
+
+(define text04 "You're at the curve; the road continues. Maybe turn back?")
+
+(define text05 "Plans never seem to work out, but we'll get where we're going,
+one step at a time. There's freedom in that, moving forward, casting aside
+weights.")
+
+(define text06 "There's so much to dig up from the past - sparking rubies or
+horrifying shit that ought to be forgotten. Was there a sign back there? How
+far have we gone?")
+
+(define text07 "A great emptiness is here, where it was once meaningful. What
+might've been, or what was, here we are now.")
+
+(define text08 "You read somewhere the nature of the animal sacrifices here..
+instead of outright killing, limbs would be cut off - why would the Mistress
+make it so?")
+
+(define text09 "A brilliant blue butterfly suddenly flies past. Is it actually
+so empty? Or is only the mind empty. You're rounding a bend now, still no
+sight at whats ahead")
+
+(define text10 "How many lives have you lived? How many were here in the past
+  - the infinite place.")
+
+(define text11 "You're seeking peace - freedom from chaos as much as worry.
+but how is peace under stone?")
+
+(define text12 "It's very hot today, and humid.")
