@@ -140,6 +140,11 @@
 (define (matrix-ref m i j)
   (vector-ref (vector-ref m i) j))
 
+(define (checkeof x)
+  (if (eof-object? x)
+    (quit)
+    x))
+
 (define (in item list)
   ;;; Tells you if an item is in a list or not
   (cond ((member item list) #t) (else #f)))
@@ -155,7 +160,7 @@
 ; todo we need to check for #!eof or hope the user doesnt ctrl-D
 (define (get-command)
   ;;; Gets the command from the user and turns it into a list
-  (map string->symbol (string-tokenize (string-downcase (read-line)))))
+  (map string->symbol (string-tokenize (string-downcase (checkeof (read-line))))))
 
 (define (run-command command)
   ;;; Run the users command.
