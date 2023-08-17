@@ -28,8 +28,8 @@
 (load "text.scm")
 
 ; global vars
-(define posX 16)
-(define posY 5)
+(define posX 0)
+(define posY 2)
 (define rude 0)
 
 ; map setup
@@ -39,6 +39,7 @@
 
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
+; to account for this, our north and south functions are mirrored
 (define mmaapp `#(#(1 1 1 0 0 0 0 0)	;0
 		  #(1 0 0 0 0 0 0 0)	;1
 		  #(1 1 1 1 0 0 0 0)	;2
@@ -70,15 +71,15 @@
 
 ; todo cleanup a bit
 (define (north)
-  (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
-      (begin (print "moving..")
-	     (set! posX (+ posX 1))
-	     (ptext))
-      (print "cant go north")))
-(define (south)
   (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
       (begin (print "moving..")
 	     (set! posX (- posX 1))
+	     (ptext))
+      (print "cant go north")))
+(define (south)
+  (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
+      (begin (print "moving..")
+	     (set! posX (+ posX 1))
 	     (ptext))
       (print "cant go south")))
 (define (east)
