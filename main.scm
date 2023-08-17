@@ -30,6 +30,7 @@
 ; global vars
 (define posX 0)
 (define posY 2)
+; we lock the user away to room 7,0 if they swear :^)
 (define rude 0)
 
 ; map setup
@@ -40,7 +41,7 @@
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; to account for this, our north and south functions are mirrored
-(define mmaapp `#(#(1 1 1 0 0 0 0 0)	;0
+(define mmaapp `#(#(1 1 1 0 0 0 0 1)	;0
 		  #(1 0 0 0 0 0 0 0)	;1
 		  #(1 1 1 1 0 0 0 0)	;2
 		  #(0 0 0 1 1 0 0 0)	;3
@@ -61,7 +62,11 @@
 
 ; commands
 ; we must define the whole list of valid cmds
-(define user-commands '(north south east west xyzzy look help quit))
+; pos cmd is for debug purposes, remove for release
+(define user-commands '(north south east west xyzzy look help quit pos))
+
+(define (pos)
+  (print posX "," posY))
 
 (define (quit)
   (exit))
