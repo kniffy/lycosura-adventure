@@ -37,26 +37,25 @@
 ; the room validity checking is only testing for zero, so we define
 ; our text within the mmaapp array, and display it once we traverse
 
-; do we actually know how this is oriented?
+; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
-; x is vertical
-(define mmaapp `#(#(0 0 0 1 0 0 0 0)		;0
-		  #(1 0 0 1 1 1 0 0)		;1
-		  #(1 1 0 0 0 1 1 1)		;2
-		  #(0 1 0 0 0 1 0 1)		;3
-		  #(0 1 1 1 1 1 0 1)		;4
-		  #(0 1 0 1 0 0 0 0)		;5
-		  #(0 1 0 1 0 0 0 0)		;6
-		  #(1 1 0 1 0 1 1 1)		;7
-		  #(0 1 0 1 1 1 0 1)		;8
-		  #(0 1 0 0 0 0 1 1)		;9
-		  #(0 0 0 1 1 1 1 0)		;10
-		  #(0 0 0 1 0 0 0 0)		;11
-		  #(0 0 0 1 0 0 0 0)		;12
-		  #(0 0 0 1 1 0 0 0)		;13
-		  #(0 0 0 0 1 1 1 1)		;14
-		  #(0 0 0 0 0 0 0 1)		;15
-		  #(0 0 0 0 0 1 1 1)))		;16
+(define mmaapp `#(#(1 1 1 0 0 0 0 0)	;0
+		  #(1 0 0 0 0 0 0 0)	;1
+		  #(1 1 1 1 0 0 0 0)	;2
+		  #(0 0 0 1 1 0 0 0)	;3
+		  #(0 0 0 0 1 0 0 0)	;4
+		  #(0 0 0 0 1 0 0 0)	;5
+		  #(0 1 1 1 1 0 0 0)	;6
+		  #(1 1 0 0 0 0 1 0)	;7
+		  #(1 0 1 1 1 0 1 0)	;8
+		  #(1 1 1 0 1 0 1 1)	;9
+		  #(0 0 0 0 1 0 1 0)	;10
+		  #(0 0 0 0 1 0 1 0)	;11
+		  #(1 0 1 1 1 1 1 0)	;12
+		  #(1 0 1 0 0 0 1 0)	;13
+		  #(1 1 1 0 0 0 1 1)	;14
+		  #(0 0 1 1 1 0 0 1)	;15
+		  #(0 0 0 0 1 0 0 0)))	;16
 ;		    0 1 2 3 4 5 6 7
 
 ; commands
