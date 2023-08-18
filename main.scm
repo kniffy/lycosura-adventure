@@ -29,7 +29,7 @@
 
 ; global vars
 (define posX 0)
-(define posY 2)
+(define posY 3)
 ; we lock the user away to room 7,0 if they swear :^)
 (define rude 0)
 
@@ -41,12 +41,12 @@
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; to account for this, our north and south functions are mirrored
-(define mmaapp `#(#(1 1 1 0 0 0 0 1)	;0
-		  #(1 0 0 0 0 0 0 0)	;1
-		  #(1 1 1 1 0 0 0 0)	;2
-		  #(0 0 0 1 1 0 0 0)	;3
-		  #(0 0 0 0 1 0 0 0)	;4
-		  #(0 0 0 0 1 0 0 0)	;5
+(define mmaapp `#(#(,text02 ,text03 ,text01 0 0 0 0 1)	;0
+		  #(,text04 0 0 0 0 0 0 0)	;1
+		  #(,text05 ,text06 ,text07 ,text08 0 0 0 0)	;2
+		  #(0 0 0 ,text09 ,text10 0 0 0)	;3
+		  #(0 0 0 0 ,text11 0 0 0)	;4
+		  #(0 0 0 0 ,text12 0 0 0)	;5
 		  #(0 1 1 1 1 0 0 0)	;6
 		  #(1 1 0 0 0 0 1 0)	;7
 		  #(1 0 1 1 1 0 1 0)	;8
@@ -79,26 +79,22 @@
 ; todo cleanup a bit
 (define (north)
   (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
-      (begin (print "moving..")
-	     (set! posX (- posX 1))
+      (begin (set! posX (- posX 1))
 	     (ptext))
       (print "cant go north")))
 (define (south)
   (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
-      (begin (print "moving..")
-	     (set! posX (+ posX 1))
+      (begin (set! posX (+ posX 1))
 	     (ptext))
       (print "cant go south")))
 (define (east)
   (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
-      (begin (print "moving..")
-	     (set! posY (+ posY 1))
+      (begin (set! posY (+ posY 1))
 	     (ptext))
       (print "cant go east")))
 (define (west)
   (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
-      (begin (print "moving..")
-	     (set! posY (- posY 1))
+      (begin (set! posY (- posY 1))
 	     (ptext))
       (print "cant go west")))
 
