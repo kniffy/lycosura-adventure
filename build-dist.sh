@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-set -eu
+#!/usr/bin/env sh
 
 # for release, we want a tiny stripped
 # and optimized file, and packed zstd
