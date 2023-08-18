@@ -41,8 +41,8 @@
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; to account for this, our north and south functions are mirrored
-(define mmaapp `#(#(,text02 ,text03 ,text01 0 0 0 0 1)	;0
-		  #(,text04 0 0 0 0 0 0 0)	;1
+(define mmaapp `#(#(,text04 ,text03 ,text01 0 0 0 0 1)	;0
+		  #(,text02 0 0 0 0 0 0 0)	;1
 		  #(,text05 ,text06 ,text07 ,text08 0 0 0 0)	;2
 		  #(0 0 0 ,text09 ,text10 0 0 0)	;3
 		  #(0 0 0 0 ,text11 0 0 0)	;4

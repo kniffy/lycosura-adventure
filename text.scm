@@ -41,14 +41,14 @@ down those roads?
 (define text03 "A turn is in the distance, still can't see beyond though.
 ")
 
-(define text04 "You're at the curve; the road continues. Maybe turn back?
+(define text04 "You're at the curve, the road continues south.. Maybe turn back?
 ")
 
 (define text05 "Plans never seem to work out, but we'll get where we're going, one step at a
 time. There's freedom in that, moving forward, casting aside weights.
 ")
 
-(define text06 "There's so much to dig up from the past - sparking rubies or horrifying shit
+(define text06 "There's so much to dig up from the past - sparkling rubies or horrifying shit
 that ought to be forgotten. Was there a sign back there? How far have we gone?
 ")
 
