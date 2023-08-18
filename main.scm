@@ -63,7 +63,9 @@
 ; commands
 ; we must define the whole list of valid cmds
 ; pos cmd is for debug purposes, remove for release
+; did we get all the swears?
 (define user-commands '(north south east west xyzzy look help quit pos))
+(define swears '(fuck shit asshole))
 
 (define (pos)
   (print posX "," posY))
@@ -108,6 +110,7 @@
     ((1) ;;; Describe the item that the player is looking at.
      (print "one"))))
 
+; todo what should xyzzy do?
 (define (xyzzy)
   (print "you did the thing!"))
 
@@ -157,7 +160,6 @@
   ;;; Returns the value from an alist
   (cadr (assoc item alist)))
 
-; todo we need to check for #!eof or hope the user doesnt ctrl-D
 (define (get-command)
   ;;; Gets the command from the user and turns it into a list
   (map string->symbol (string-tokenize (string-downcase (checkeof (read-line))))))
