@@ -25,7 +25,8 @@
 	(scheme file))
 
 ; text
-(load "text.scm")
+;(load "text.scm")
+(declare (uses text))
 
 ; global vars
 (define posX 0)

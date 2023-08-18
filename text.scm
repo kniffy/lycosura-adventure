@@ -4,9 +4,10 @@
 
 ; should we format to 80 col? or set strings as giant single lines
 
+(declare (unit text))
+
 ; not entirely sure why this huge block actually works..
-(define banner "
-There was a city said to be the oldest in the world: Lycosura. the most
+(define banner "There was a city said to be the oldest in the world: Lycosura. the most
 notable remains of it are the ruins of the Temple of Despoina
 
 ... beside the temple of the Mistress on the right is what is called the Hall,
@@ -68,7 +69,7 @@ only the mind empty. You're rounding a bend now, still no sight at whats ahead
 place.
 ")
 
-(define text11 "You're seeking peace - freedom from chaos as much as worry. but how is peace
+(define text11 "You're seeking peace - freedom from chaos as much as worry, but how is peace
 under stone?
 ")
 
