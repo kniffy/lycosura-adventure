@@ -7,7 +7,9 @@
 (declare (unit text))
 
 ; not entirely sure why this huge block actually works..
-(define banner "There was a city said to be the oldest in the world: Lycosura. the most
+(define banner "DEVELOPMENT VERSION CIRCA AUG. 2023
+
+There was a city said to be the oldest in the world: Lycosura. The most
 notable remains of it are the ruins of the Temple of Despoina
 
 ... beside the temple of the Mistress on the right is what is called the Hall,
