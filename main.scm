@@ -25,6 +25,8 @@
 	(scheme file))
 
 ; text
+; for final release, we will redefine the entire map array to the evaluated
+; full size vector, so as to simplify building
 ;(load "text.scm")
 (declare (uses text))
 
