@@ -90,3 +90,43 @@ asleep. I'm just gone.
 (define text15 "A bit hungry now.
 ")
 
+(define text16 "What is the Mistress' real name? If only one could still join the Mysteries
+and find out
+")
+
+(define text17 "How did we end up at this path? Love or something less, maybe. No one else
+will be here.
+
+Running away or finding something more - is there a difference
+")
+
+(define text18 "Why did you come to this place? What are you doing here? I just had to run
+away, which worked for a while, but there's that void.
+")
+
+(define text19 "A friend of mine told me once: he had a connection with a girl in the early
+days of the internet. It was their habit to talk every day, til one day he didn't get online
+for whatever reason.. he never saw her online again.
+")
+
+(define text20 "Nobody knows when I'm being serious nobody wants you here, go home. Beyond
+the traditional obscurity and weariness in my life, it's mystery.
+
+Til I see you again
+")
+
+(define text21 "A couple of birds fly by overhead. You still can't see much - how long is
+this road? A bit spooky with just trees all around, but it's calm and serene here.
+")
+
+(define text22 "Where did we leave the car? Or was there one? Difficult listening at first;
+so, timeless.
+")
+
+(define text23 "You might think you know what you don't. I bet your brain is broken because
+you're a person and your brain will try to do what which we can't.
+")
+
+(define text24 "Is this place a graveyard? Hopefully just ruins..
+")
+
