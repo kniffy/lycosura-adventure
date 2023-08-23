@@ -116,7 +116,7 @@ Til I see you again
 ")
 
 (define text21 "A couple of birds fly by overhead. You still can't see much - how long is
-this road? A bit spooky with just trees all around, but it's calm and serene here.
+this road? A bit unnerving with just trees all around, but it's calm and serene here.
 ")
 
 (define text22 "Where did we leave the car? Or was there one? Difficult listening at first;
