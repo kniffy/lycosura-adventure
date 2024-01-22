@@ -21,14 +21,14 @@
 (import (r7rs)
 	(srfi-1)
 	(srfi-13)
-	(srfi-69)
+	;(srfi-69)
 	(scheme file))
 
 ; text
 ; for final release, we will redefine the entire map array to the evaluated
 ; full size vector, so as to simplify building
-;(load "text.scm")
-(declare (uses text))
+(load "text.scm")
+;(declare (uses text))
 
 ; global vars
 (define posX 0)
@@ -50,10 +50,10 @@
 		  #(0 0 0 ,text09 ,text10 0 0 0)	;3
 		  #(0 0 0 0 ,text11 0 0 0)	;4
 		  #(0 0 0 0 ,text12 0 0 0)	;5
-		  #(0 1 ,text15 ,text14 ,text13 0 0 0)	;6
-		  #(1 1 0 0 0 0 1 0)	;7
-		  #(1 0 1 1 1 0 1 0)	;8
-		  #(1 1 1 0 1 0 1 1)	;9
+		  #(0 ,text16 ,text15 ,text14 ,text13 0 0 0)	;6
+		  #(,text18 ,text17 0 0 0 0 1 0)	;7
+		  #(,text19 0 ,text23 ,text24 1 0 1 0)	;8
+		  #(,text20 ,text21 ,text22 0 1 0 1 1)	;9
 		  #(0 0 0 0 1 0 1 0)	;10
 		  #(0 0 0 0 1 0 1 0)	;11
 		  #(1 0 1 1 1 1 1 0)	;12
