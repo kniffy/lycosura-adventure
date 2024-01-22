@@ -25,10 +25,11 @@
 	(scheme file))
 
 ; text
-; for final release, we will redefine the entire map array to the evaluated
-; full size vector, so as to simplify building
-(load "text.scm")
-;(declare (uses text))
+; for final release, we will redefine the entire map array to the expanded
+; full size vector, so as to compile this as a single file
+;(load "text.scm")
+(declare (uses text))
+
 
 ; global vars
 (define posX 0)
@@ -43,7 +44,7 @@
 
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
-; to account for this, our north and south functions are mirrored
+; to account for this, our north and south functions are flipped
 (define mmaapp `#(#(,text04 ,text03 ,text01 0 0 0 0 1)	;0
 		  #(,text02 0 0 0 0 0 0 0)	;1
 		  #(,text05 ,text06 ,text07 ,text08 0 0 0 0)	;2
@@ -68,7 +69,7 @@
 ; pos cmd is for debug purposes, remove for release
 ; did we get all the swears?
 (define user-commands '(north south east west xyzzy look help quit pos))
-(define swears '(fuck shit asshole))
+(define swears '(fuck shit asshole)) ; todo dictionary of swearing
 
 (define (pos)
   (print posX "," posY))

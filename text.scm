@@ -2,12 +2,15 @@
 ; in the map array definition. should be pretty fast and efficient; we will
 ; not be reading from disk
 
-; should we format to 80 col? or set strings as giant single lines
+; should we format to 80col?
+
+; there is not really a nice way to do multi-line strings, this maybe breaks
+; on other Schemes, if in doubt use Chicken
 
 (declare (unit text))
 
 ; not entirely sure why this huge block actually works..
-(define banner "DEVELOPMENT VERSION CIRCA AUG. 2023
+(define banner "DEVELOPMENT VERSION CIRCA JAN. 2024
 
 There was a city said to be the oldest in the world: Lycosura. The most
 notable remains of it are the ruins of the Temple of Despoina
