@@ -18,17 +18,14 @@
 
 ; https://tildas.org.
 
-(import (r7rs)
-	(srfi-1)
-	(srfi-13)
-	;(srfi-69)
-	(scheme file))
+(import :std/srfi/1) 
+(import :std/srfi/13)
 
 ; text
 ; for final release, we will redefine the entire map array to the expanded
 ; full size vector, so as to compile this as a single file
-;(load "text.scm")
-(declare (uses text))
+(load "text.scm")
+;(declare (uses text))
 
 
 ; global vars

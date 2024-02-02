@@ -7,7 +7,7 @@
 ; there is not really a nice way to do multi-line strings, this maybe breaks
 ; on other Schemes, if in doubt use Chicken
 
-(declare (unit text))
+;(declare (unit text))
 
 ; not entirely sure why this huge block actually works..
 (define banner "DEVELOPMENT VERSION CIRCA JAN. 2024
