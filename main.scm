@@ -85,34 +85,34 @@
   (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
       (begin (set! posX (- posX 1))
 	     (ptext))
-      (print "cant go north")))
+      (display "cant go north")))
 (define (south)
   (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
       (begin (set! posX (+ posX 1))
 	     (ptext))
-      (print "cant go south")))
+      (display "cant go south")))
 (define (east)
   (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
       (begin (set! posY (+ posY 1))
 	     (ptext))
-      (print "cant go east")))
+      (display "cant go east")))
 (define (west)
   (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
       (begin (set! posY (- posY 1))
 	     (ptext))
-      (print "cant go west")))
+      (display "cant go west")))
 
 ; todo define look to print optional extra text for areas eg. the rude room
 (define (look . location)
   (case (length location)
     ((0) ;;; Assume the player is asking about the current room
-     (print "zero"))
+     (display "zero"))
     ((1) ;;; Describe the item that the player is looking at.
-     (print "one"))))
+     (display "one"))))
 
 ; todo what should xyzzy do?
 (define (xyzzy)
-  (print "you did the thing!"))
+  (display "you did the thing!"))
 
 ; end of commands
 
@@ -121,8 +121,8 @@
 ; print the room text
 (define (ptext)
   (if (string? (matrix-ref mmaapp posX posY))
-    (print (matrix-ref mmaapp posX posY))
-    (print "no text here?")))
+    (display (matrix-ref mmaapp posX posY))
+    (display "no text here?")))
 
 (define (lookahead x y)
   (cond
@@ -168,7 +168,7 @@
   ;;; Run the users command.
   (if (> (length command) 0)
       (eval command)
-      (print "Sorry I didn't understand that")))
+      (display "Sorry I didn't understand that")))
 
 (define (filter-command command filter_list)
   ;;; Removes all words in the command that are not in the filter list. Preserves order of remaining words.
@@ -181,14 +181,14 @@
   ;;; The REPL for user commands
   (let ((input (filter-command (get-command) user-commands)))
     (run-command input)
-    (display ">")
+    (display "\n>")
     (repl)))
 
 ; main loop here
 (define (main)
   (begin
-    (print banner)
-    (display ">")
+    (display banner)
+    (display "\n>")
     (repl)))
 
 (main)
