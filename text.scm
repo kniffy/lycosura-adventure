@@ -8,6 +8,7 @@
 ; on other Schemes, if in doubt use Chicken
 
 ;(declare (unit text))
+(export #t)
 
 ; not entirely sure why this huge block actually works..
 (define banner "DEVELOPMENT VERSION CIRCA JAN. 2024
