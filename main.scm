@@ -18,10 +18,14 @@
 
 ; https://tildas.org.
 
-(import
-  (chicken io)
-  (srfi-1)
-  (srfi-13))
+; TODO maybe we dont want to tie all the text to specific areas
+; we can set some dialog to be based on a incrementing variable
+; eg. each NSEW will add one to a variable, and dialog will display
+; on each even number perhaps
+
+(import (chicken io)
+	(srfi-1)
+	(srfi-13))
 
 ; text
 ; for final release, we will eval out the map vector, so as to
@@ -39,7 +43,7 @@
 (define rude 0)
 
 ; map setup
-; we define a 2d array, and use a ref from the scheme textbook :^)
+; we define a 2d vector, and use a ref from the scheme textbook :^)
 ; the room validity checking is only testing for zero, so we define
 ; our text within the mmaapp array, and display it once we traverse
 
