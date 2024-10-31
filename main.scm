@@ -18,18 +18,19 @@
 
 ; https://tildas.org.
 
-(import (r7rs)
-	(srfi-1)
-	(srfi-13)
-	;(srfi-69)
-	(scheme file))
+(import
+  (chicken io)
+  (srfi-1)
+  (srfi-13))
 
 ; text
-; for final release, we will redefine the entire map array to the expanded
-; full size vector, so as to compile this as a single file
-;(load "text.scm")
-(declare (uses text))
-
+; for final release, we will eval out the map vector, so as to
+; keep things in one file, no need for cond-expand
+(cond-expand
+  (csi
+    (load "text.scm"))
+  (compiling
+    (declare (uses text))))
 
 ; global vars
 (define posX 0)
@@ -181,14 +182,14 @@
   ;;; The REPL for user commands
   (let ((input (filter-command (get-command) user-commands)))
     (run-command input)
-    (display "\n>")
+    (display "\n> ")
     (repl)))
 
 ; main loop here
 (define (main)
   (begin
     (display banner)
-    (display "\n>")
+    (display "\n> ")
     (repl)))
 
 (main)

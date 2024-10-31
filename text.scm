@@ -10,7 +10,8 @@
 (declare (unit text))
 
 ; not entirely sure why this huge block actually works..
-(define banner "DEVELOPMENT VERSION CIRCA JAN. 2024
+(define banner #<<END
+DEVELOPMENT VERSION CIRCA NOV. 2024
 
 There was a city said to be the oldest in the world: Lycosura. The most
 notable remains of it are the ruins of the Temple of Despoina
@@ -28,7 +29,8 @@ and Pamphos before him say in their poems, the real name of the Mistress I am
 afraid to write to the uninitiated
 
   -Pausanias
-")
+END
+)
 
 ; variable names here are arbitrary, but we'll try to follow the convention:
 ; each tile area is assigned a number 1-64, refer to the chart for positioning
