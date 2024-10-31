@@ -207,3 +207,160 @@ Is this place a graveyard? Hopefully just ruins..
 END
 )
 
+(define text25 #<<END
+You're missing your oldest friend
+- you dont even know what became of them.
+Maybe they're mad at you, or at worst not even alive anymore.
+
+Or, they're just busy living their life, having moved on.
+
+END
+)
+
+(define text26 #<<END
+Perhaps they'll call up some day, and it'll be like old times again
+
+or.. not
+
+END
+)
+
+(define text27 #<<END
+You're all the way out here now, looking for god knows what, away from those
+who love you
+
+END
+)
+
+(define text28 #<<END
+You hear a ping on your phone.
+
+Looking at it, theres no awaiting notifications; just a phantom
+
+END
+)
+
+(define text29 #<<END
+So tense having thought of this, why does shit like this pop up out here in
+the wilderness?
+
+END
+)
+
+(define text30 #<<END
+Another bird flies by.
+
+END
+)
+
+(define text31 #<<END
+Fragmentation - is it life in ruins, or the ruins in ruins?
+
+What does any of this add up to being?
+
+END
+)
+
+(define text32 #<<END
+Are the spaces in between wounds? - whatever, it doesn't really matter does
+it, you're out here right now.
+
+END
+)
+
+(define text33 #<<END
+You see a fractured piece of something by the path - the hand of a statue?
+Chunk of marble whatever it is
+
+END
+)
+
+(define text34 #<<END
+What are you rushing for? Why hurry?
+Once again, why did you come to this place?
+
+END
+)
+
+(define text35 #<<END
+What will home be like once you're through these ruins - at some point soon,
+you'll just be there with your thoughts, trying to sleep - still there in your
+mind after all this travel getting here and back home. Will you steal a
+souvinir to bring back? Not that many would care to see a rock, or ask why
+you're walking around with one.
+
+END
+)
+
+(define text36 #<<END
+Time is ticking, is it getting close?
+
+END
+)
+
+(define text37 #<<END
+You hate being seen, maybe thats a piece of why you're here.
+
+Nobody to see you out here, but the pretty picture maybe isnt so pure.
+
+END
+)
+
+(define text38 #<<END
+Is anyone's grave out here you wonder.
+
+Surely there must be, but no markings remain. How did the Lycosurians practice
+funerary rites? What became of them.
+
+END
+)
+
+(define text39 #<<END
+You're thinking back to those you'd want to see again
+
+END
+)
+
+(define text40 #<<END
+Living in a loop now. Are we back at the start?
+Was being hit better or worse than neglect?
+
+Silence as an owl flies past you.
+It lands on a perch, glances knowingly, then looks away.
+
+You're still completely motionless. Are you holding your breath?
+
+END
+)
+
+(define text41 #<<END
+Turn back already, there's nothing here.
+
+END
+)
+
+(define text42 #<<END
+Your friends want you to hang out, but you have some trepidation.
+What if it's weird? They don't seem to want to reach out..
+
+END
+)
+
+(define text43 #<<END
+Why were you so angry coming back home? There ought to be love right?
+Though they say familiarity breeds contempt, what are you running from?
+  - it means nothing to me
+  . she probably missed you
+  - nothing
+
+Should there be guilt for feeling indifference?
+END
+)
+
+(define text44 #<<END
+You can't resurrect a lost past - were you actually happy then?
+
+Am I telling you this, or myself
+
+END
+)
