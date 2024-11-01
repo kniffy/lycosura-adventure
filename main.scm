@@ -37,10 +37,10 @@
     (declare (uses text))))
 
 ; global vars
-(define posX 0)
-(define posY 3)
+(define *posX* 0)
+(define *posY* 3)
 ; we lock the user away to room 7,0 if they swear :^)
-(define rude 0)
+(define *rude* 0)
 
 ; map setup
 ; we define a 2d vector, and use a ref from the scheme textbook :^)
@@ -73,11 +73,11 @@
 ; we must define the whole list of valid cmds
 ; pos cmd is for debug purposes, remove for release
 ; did we get all the swears?
-(define user-commands '(north south east west xyzzy look help quit pos))
+(define user-commands '(north south east west xyzzy look help quit exit pos))
 (define swears '(fuck shit asshole)) ; todo dictionary of swearing
 
 (define (pos)
-  (print posX "," posY))
+  (print *posX* "," *posY*))
 
 (define (quit)
   (exit))
@@ -85,29 +85,29 @@
 (define (help)
   (print "You can\n" user-commands))
 
-; todo cleanup a bit
+; TODO this is dumb, boilerplate this
 (define (north)
-  (if (and (checkbounds (- posX 1) posY) (lookahead (- posX 1) posY))
-      (begin (set! posX (- posX 1))
+  (if (and (checkbounds (- *posX* 1) *posY*) (lookahead (- *posX* 1) *posY*))
+      (begin (set! *posX* (- *posX* 1))
 	     (ptext))
       (display "cant go north")))
 (define (south)
-  (if (and (checkbounds (+ posX 1) posY) (lookahead (+ posX 1) posY))
-      (begin (set! posX (+ posX 1))
+  (if (and (checkbounds (+ *posX* 1) *posY*) (lookahead (+ *posX* 1) *posY*))
+      (begin (set! *posX* (+ *posX* 1))
 	     (ptext))
       (display "cant go south")))
 (define (east)
-  (if (and (checkbounds posX (+ posY 1)) (lookahead posX (+ posY 1)))
-      (begin (set! posY (+ posY 1))
+  (if (and (checkbounds *posX* (+ *posY* 1)) (lookahead *posX* (+ *posY* 1)))
+      (begin (set! *posY* (+ *posY* 1))
 	     (ptext))
       (display "cant go east")))
 (define (west)
-  (if (and (checkbounds posX (- posY 1)) (lookahead posX (- posY 1)))
-      (begin (set! posY (- posY 1))
+  (if (and (checkbounds *posX* (- *posY* 1)) (lookahead *posX* (- *posY* 1)))
+      (begin (set! *posY* (- *posY* 1))
 	     (ptext))
       (display "cant go west")))
 
-; todo define look to print optional extra text for areas eg. the rude room
+; TODO define look to print optional extra text for areas eg. the rude room
 (define (look . location)
   (case (length location)
     ((0) ;;; Assume the player is asking about the current room
@@ -115,7 +115,7 @@
     ((1) ;;; Describe the item that the player is looking at.
      (display "one"))))
 
-; todo what should xyzzy do?
+; TODO what should xyzzy do?
 (define (xyzzy)
   (display "you did the thing!"))
 
@@ -125,8 +125,8 @@
 
 ; print the room text
 (define (ptext)
-  (if (string? (matrix-ref mmaapp posX posY))
-    (display (matrix-ref mmaapp posX posY))
+  (if (string? (matrix-ref mmaapp *posX* *posY*))
+    (display (matrix-ref mmaapp *posX* *posY*))
     (display "no text here?")))
 
 (define (lookahead x y)
