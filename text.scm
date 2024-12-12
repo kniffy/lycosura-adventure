@@ -208,6 +208,113 @@ END
 )
 
 (define text25 #<<END
+Haven't been able to sleep lately. Just laying there, mind empty, but while
+I'm awake, it's filled with junk. What am I looking for? Is Despina out here?
+
+END
+)
+
+(define text26 #<<END
+If she is, not sure what I'd even do..
+
+END
+)
+
+(define text27 #<<END
+Health keeps getting worse over time - aches just don't go away, senses never
+sharpen.
+
+END
+)
+
+(define text28 #<<END
+You're broken hearted
+END
+)
+
+(define text29 #<<END
+Alienation brought you to this place - but you're the outsider here.
+END
+)
+
+(define text30 #<<END
+Every time you drift off to sleep the Mistress starts to say something..
+
+But she's never in the dream
+
+END
+)
+
+(define text31 #<<END
+No one else is with you
+This part you're on your own
+
+END
+)
+
+(define text32 #<<END
+You thought things would be better - theres that crushing emptiness, or the
+idea of what may have been.
+
+END
+)
+
+(define text33 #<<END
+Your heart has been closed off for years, so why are you open for this?
+
+END
+)
+
+(define text34 #<<END
+Thinking on it, let's just turn back. There really can't be any good here..
+Please go back, or quit the game
+
+END
+)
+
+(define text35 #<<END
+Quit!
+END
+)
+
+(define text36 #<<END
+You'll regret finding out..
+END
+)
+
+(define text37 #<<END
+I'm a bad friend, turned to stone. All I can muster to those is silence. Why
+did anyone like me?
+
+END
+)
+
+(define text38 #<<END
+What is ever really the point
+END
+)
+
+(define text39 #<<END
+I found and read an old notebook from college, it was more sad than I remember
+ - I was in a daze and suicidal, apparently. How can one not even recall that?
+Self protection mechanism maybe perhaps.
+
+END
+)
+
+(define text40 #<<END
+The point is to live simply and healthy among friends - much else is bullshit,
+so why the hell are we here in this land alone? She can't possibly be here.
+
+END
+)
+
+;(define text41 #<<END
+
+
+
+; TODO fix up the numbers, we missed a bunch of copy
+(define text25 #<<END
 You're missing your oldest friend
 - you dont even know what became of them.
 Maybe they're mad at you, or at worst not even alive anymore.
@@ -361,6 +468,16 @@ END
 You can't resurrect a lost past - were you actually happy then?
 
 Am I telling you this, or myself
+
+END
+)
+
+; ending bit
+(define endcard #<<END
+You've made it to the end - so you understand now, the Lycosurians died a long
+time ago, there's nothing to discover.
+
+We'll still be here after you leave.
 
 END
 )
