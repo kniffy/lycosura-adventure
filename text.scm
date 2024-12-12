@@ -309,7 +309,136 @@ so why the hell are we here in this land alone? She can't possibly be here.
 END
 )
 
-;(define text41 #<<END
+(define text41 #<<END
+Was it even real? It felt like it at the time, but it's cold and alien now -
+or just lifeless?
+The worst would be having it happen again, but why though? Can't I be an
+unfeeling robot instead?
+
+END
+)
+
+(define text42 #<<END
+Everything is broken and I don't know how i can fix it - god damn it.
+Sometimes I feel like that, but getting older has calmed me down. Less
+hormones raging or whatever.
+
+END
+)
+
+(define text43 #<<END
+You come back after a time and it's different - world kept spinning while your
+focus was elsewhere.
+What the fuck did I do?
+
+END
+)
+
+(define text44 #<<END
+Honestly I've just kept falling through the cracks
+
+END
+)
+
+(define text45 #<<END
+Why the fuck worry about everything, sticking fingers in everything. Leave
+well enough alone for once.
+
+END
+)
+
+(define text46 #<<END
+Refresh my memory - is it all when I came off coldly?
+
+Discrete mathematics suggests things like partitions, or a function with only
+integers and no reals.
+
+How many hands have I shaken? Not very many.
+
+Do you hear anything I'm saying?
+
+Fan too loud, it's cold - aphorism
+END
+)
+
+(define text47 #<<END
+You forgot to bring a camera. What will you do with yourself? Can't make it
+alone.
+
+END
+)
+
+(define text48 #<<END
+Was there ever love there? Ladybird.
+Don't forget, even though you surely will.
+
+END
+)
+
+(define text49 #<<END
+Did some archaeology once, listened to music of my youth.. started crying.
+Same with photos of us.
+
+END
+)
+
+(define text50 #<<END
+Am I actually sane? We live in a dream, or so says David Bowie..
+
+Is there enlightenment without suffering?
+
+You are in a very peculiar emotional place.
+
+END
+)
+
+(define text51 #<<END
+It's afternoon now, light starting to change
+END
+)
+
+(define text52 #<<END
+Was it desire that brought you here? Surely it's not a quest for knowledge.
+She won't be here, and wont go with you even if she was.
+
+END
+)
+
+(define text53 #<<END
+Haven't I met someone new? Am I holding on too tightly? Is loss letting go?
+END
+)
+
+(define text54 #<<END
+I have the urge to just leave my friends - cut ties. They just take me for
+granted, ignoring most of what I say. But what would it be like otherwise?
+Everyone hyping me up all the time?
+
+END
+)
+
+(define text55 #<<END
+Being a man is when you notice you aren't shit and you step it up. Not a
+matter of age or looks.
+
+END
+)
+
+(define text56 #<<END
+Way out in the distance there is a hint of something; or is it grams' eyes
+seeing things again
+
+END
+)
+
+(define text57 #<<END
+Gotta feed the dog but he isn't with me now - he's a good boy, probably
+missing me being gone.
+
+END
+)
+
+; TODO someone else shows up
 
 
 
