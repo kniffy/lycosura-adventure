@@ -2,9 +2,9 @@
 ; in the map array definition. should be pretty fast and efficient; we will
 ; not be reading from disk
 
-(declare (unit text))
-
-; should we format to 80col?
+; variable names here are arbitrary, but we'll try to follow the convention:
+; each tile area is assigned a number 1-64, refer to the chart for positioning
+; extra text syntax is text<num>b
 
 ; there is not really a nice way to do multi-line strings, this maybe breaks
 ; on other Schemes, if in doubt use Chicken
@@ -13,11 +13,13 @@
 ; also someone else shows up at some point, and we need the ending
 ; we meet despina in a dream
 
+(declare (unit text))
+
 (define banner #<<END
 DEVELOPMENT VERSION CIRCA DEC. 2024
 
-There was a city said to be the oldest in the world: Lycosura. The most
-notable remains of it are the ruins of the Temple of Despoina
+There was a city said to be the oldest in the world: Lycosura.
+The most notable remains of it are the ruins of the Temple of Despoina
 
 ... beside the temple of the Mistress on the right is what is called the Hall,
 where the Arcadians celebrate Mysteries, and sacrifice to the Mistress many
@@ -35,22 +37,26 @@ afraid to write to the uninitiated
 END
 )
 
-; variable names here are arbitrary, but we'll try to follow the convention:
-; each tile area is assigned a number 1-64, refer to the chart for positioning
-; extra text syntax is text<num>-<b>
 (define text01 #<<END
-You're at the start of a winding road, you can see it goes uphill, but there
-are trees blocking all view of whats beyond.
+You're at the start of a winding road.
+You can see it goes uphill, but there are trees blocking all view of what's
+beyond.
 
-Why even go down this? It doesn't seem scary, just pointless. Turning over
-rocks can never lead to good, as far as I know, but I'm just gone.
+Up there somewhere are the ruins.
+
+Type [NORTH, SOUTH, EAST, WEST] to move, or EXIT to give up now.
+
+Sometimes you'll have extra thoughts in your [MIND]
 
 END
 )
 
-(define text02 #<<END
-All the paths I could have gone down, yet I'm on this one somehow; what were
-down those roads?
+(define text01b #<<END
+Why even go down this? It doesn't seem scary, just pointless.
+Turning over rocks can never lead to good, as far as I know.
+
+All the paths I could have gone down, yet I'm on this one somehow;
+what were down those other roads?
 
 END
 )
