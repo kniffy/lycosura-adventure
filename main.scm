@@ -18,10 +18,7 @@
 
 ; https://tildas.org.
 
-; TODO maybe we dont want to tie all the text to specific areas
-; we can set some dialog to be based on a incrementing variable
-; eg. each NSEW will add one to a variable, and dialog will display
-; on each even number perhaps
+; TODO implement MIND command
 
 (import (chicken io)
 	(srfi-1)
@@ -50,24 +47,24 @@
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; to account for this, our north and south functions are flipped
-(define mmaapp `#(#(,text04 ,text03 ,text01 0 0 0 0 1)	;0
-		  #(,text02 0 0 0 0 0 0 0)	;1
-		  #(,text05 ,text06 ,text07 ,text08 0 0 0 0)	;2
-		  #(0 0 0 ,text09 ,text10 0 0 0)	;3
-		  #(0 0 0 0 ,text11 0 0 0)	;4
-		  #(0 0 0 0 ,text12 0 0 0)	;5
-		  #(0 ,text16 ,text15 ,text14 ,text13 0 0 0)	;6
-		  #(,text18 ,text17 0 0 0 0 1 0)	;7
-		  #(,text19 0 ,text23 ,text24 1 0 1 0)	;8
-		  #(,text20 ,text21 ,text22 0 1 0 1 1)	;9
-		  #(0 0 0 0 1 0 1 0)	;10
-		  #(0 0 0 0 1 0 1 0)	;11
-		  #(1 0 1 1 1 1 1 0)	;12
-		  #(1 0 1 0 0 0 1 0)	;13
-		  #(1 1 1 0 0 0 1 1)	;14
-		  #(0 0 1 1 1 0 0 1)	;15
-		  #(0 0 0 0 1 0 0 0)))	;16
-;		    0 1 2 3 4 5 6 7
+(define mmaapp `#(#(,text04	,text03	,text01	0	0	0	0	1)	;0
+		  #(,text02	0	0	0	0	0	0	0)	;1
+		  #(,text05	,text06	,text07	,text08	0	0	0	0)	;2
+		  #(0	0	0	,text09	,text10	0	0	0)	;3
+		  #(0	0	0	0	,text11	0	0	0)	;4
+		  #(0	0	0	0	,text12	0	0	0)	;5
+		  #(0	,text16	,text15	,text14	,text13	0	0	0)	;6
+		  #(,text18	,text17	0	0	0	0	1	0)	;7
+		  #(,text19	0	,text23	,text24	1	0	1	0)	;8
+		  #(,text20	,text21	,text22	0	1	0	1	1)	;9
+		  #(0	0	0	0	1	0	1	0)	;10
+		  #(0	0	0	0	1	0	1	0)	;11
+		  #(1	0	1	1	1	1	1	0)	;12
+		  #(1	0	1	0	0	0	1	0)	;13
+		  #(1	1	1	0	0	0	1	1)	;14
+		  #(0	0	1	1	1	0	0	1)	;15
+		  #(0	0	0	0	1	0	0	0)))	;16
+;		    0	1	2	3	4	5	6	7
 
 ; commands
 ; we must define the whole list of valid cmds
