@@ -61,6 +61,8 @@ what were down those other roads?
 END
 )
 
+(define text02 "")
+
 (define text03 #<<END
 A turn is in the distance, still can't see beyond though.
 

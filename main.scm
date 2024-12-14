@@ -19,6 +19,9 @@
 ; https://tildas.org.
 
 ; TODO implement MIND command
+; also are we stupid for even putting text in the vector, we may need to
+; structure our data differently, but thats fuckin pain
+; maybe just set the text var names to be the proper coordinates
 
 (import (chicken io)
 	(srfi-1)
@@ -70,7 +73,7 @@
 ; we must define the whole list of valid cmds
 ; pos cmd is for debug purposes, remove for release
 ; did we get all the swears?
-(define user-commands '(north south east west xyzzy look help quit exit pos))
+(define user-commands '(north south east west xyzzy mind help quit exit pos))
 (define swears '(fuck shit asshole)) ; todo dictionary of swearing
 
 (define (pos)
@@ -104,8 +107,9 @@
 	     (ptext))
       (display "cant go west")))
 
-; TODO define look to print optional extra text for areas eg. the rude room
-(define (look . location)
+; procedure to print the extra text
+; uhh should we have text var names based on position?
+(define (mind . location)
   (case (length location)
     ((0) ;;; Assume the player is asking about the current room
      (display "zero"))
