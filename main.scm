@@ -85,7 +85,7 @@
 (define (help)
   (print "You can\n" user-commands))
 
-; TODO this is dumb, boilerplate this
+; directions
 (define (north)
   (if (and (checkbounds (- *posX* 1) *posY*) (lookahead (- *posX* 1) *posY*))
       (begin (set! *posX* (- *posX* 1))
@@ -130,6 +130,7 @@
     (display (matrix-ref mmaapp *posX* *posY*))
     (display "no text here?")))
 
+; saves us when theres not text set for the area
 (define (lookahead x y)
   (cond
     ((string? (matrix-ref mmaapp x y)) '#t)
@@ -194,6 +195,7 @@
 (define (main)
   (begin
     (display banner)
+    (display text00)
     (display "\n> ")
     (repl)))
 
