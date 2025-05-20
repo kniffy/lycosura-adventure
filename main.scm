@@ -71,13 +71,15 @@
 
 ; commands
 ; we must define the whole list of valid cmds
-; pos cmd is for debug purposes, remove for release
 ; did we get all the swears?
-(define user-commands '(north south east west xyzzy mind help quit exit pos))
+(define user-commands '(north south east west xyzzy mind help quit exit pos pos2))
 (define swears '(fuck shit asshole)) ; todo dictionary of swearing
 
+; for debugging, remove when GOLD
 (define (pos)
   (print *posX* "," *posY*))
+(define (pos2)
+  (print (cbla *posX* *posY*)))
 
 (define (quit)
   (exit))
@@ -86,26 +88,36 @@
   (print "You can\n" user-commands))
 
 ; directions
-(define (north)
-  (if (and (checkbounds (- *posX* 1) *posY*) (lookahead (- *posX* 1) *posY*))
-      (begin (set! *posX* (- *posX* 1))
-	     (ptext))
-      (display "cant go north")))
-(define (south)
-  (if (and (checkbounds (+ *posX* 1) *posY*) (lookahead (+ *posX* 1) *posY*))
-      (begin (set! *posX* (+ *posX* 1))
-	     (ptext))
-      (display "cant go south")))
-(define (east)
-  (if (and (checkbounds *posX* (+ *posY* 1)) (lookahead *posX* (+ *posY* 1)))
-      (begin (set! *posY* (+ *posY* 1))
-	     (ptext))
-      (display "cant go east")))
-(define (west)
-  (if (and (checkbounds *posX* (- *posY* 1)) (lookahead *posX* (- *posY* 1)))
-      (begin (set! *posY* (- *posY* 1))
-	     (ptext))
-      (display "cant go west")))
+(define (go dir)
+  ; NESW 0,1,2,3 respectively
+  (cond ((= dir 0)
+         (if (cbla (sub1 *posX*) *posY*)
+             (begin (set! *posX* (sub1 *posX*))
+                    (ptext))
+             (display "cant go north")))
+
+        ((= dir 1)
+         (if (cbla *posX* (add1 *posY*))
+             (begin (set! *posY* (add1 *posY*))
+                    (ptext))
+             (display "cant go east")))
+
+        ((= dir 2)
+         (if (cbla (add1 *posX*) *posY*)
+             (begin (set! *posX* (add1 *posX*))
+                    (ptext))
+             (display "cant go south")))
+
+        ((= dir 3)
+         (if (cbla *posX* (sub1 *posY*))
+             (begin (set! *posY* (sub1 *posY*))
+                    (ptext))
+             (display "cant go west")))))
+
+(define (north) (go 0))
+(define (east) (go 1))
+(define (south) (go 2))
+(define (west) (go 3))
 
 ; procedure to print the extra text
 ; uhh should we have text var names based on position?
@@ -145,6 +157,13 @@
     ((> x 16) '#f)
     ((> y 7) '#f)
     ('#t)))
+
+; higher-order help for lookahead+checkbounds
+; returns #t or #f if room is valid
+(define (cbla v w)
+  (and
+    (checkbounds v w)
+    (lookahead v w)))
 
 ; matrix-ref returns the jth element of the ith row.
 (define (matrix-ref m i j)

@@ -18,7 +18,7 @@
 (declare (unit text))
 
 (define banner #<<END
-DEVELOPMENT VERSION CIRCA DEC. 2024
+DEVELOPMENT VERSION CIRCA JUN. 2025
 
 There was a city said to be the oldest in the world: Lycosura.
 The most notable remains of it are the ruins of the Temple of Despoina
