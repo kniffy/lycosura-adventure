@@ -18,23 +18,25 @@
 
 ; https://tildas.org.
 
-; TODO implement MIND command
+; TODO
+; banish helper functions to their own module, they clog our shit up
+; implement MIND command
 ; also are we stupid for even putting text in the vector, we may need to
 ; structure our data differently, but thats fuckin pain
 ; maybe just set the text var names to be the proper coordinates
 
-(import (chicken io)
-	(srfi-1)
-	(srfi-13))
-
-; text
-; for final release, we will eval out the map vector, so as to
-; keep things in one file, no need for cond-expand
+; importing fun things, mind the cond expansions
 (cond-expand
   (csi
+    (load "func.scm")
     (load "text.scm"))
   (compiling
     (declare (uses text))))
+
+(import (chicken io)
+	(srfi-1)
+	(srfi-13))
+(import func)
 
 ; global vars
 (define *posX* 0)
@@ -50,6 +52,9 @@
 ; do we actually know how this is oriented? x is vertical
 ; north seems to be pointing downward, and 0,0 seems to be the top left
 ; to account for this, our north and south functions are flipped
+
+; for final release, we will eval out the map vector, so as to
+; keep things in one file, no need for loading text.scm
 (define mmaapp `#(#(,text04	,text03	,text01	0	0	0	0	1)	;0
 		  #(,text02	0	0	0	0	0	0	0)	;1
 		  #(,text05	,text06	,text07	,text08	0	0	0	0)	;2
@@ -88,6 +93,7 @@
   (print "You can\n" user-commands))
 
 ; directions
+; todo we can do better :^)
 (define (go dir)
   ; NESW 0,1,2,3 respectively
   (cond ((= dir 0)
@@ -134,7 +140,11 @@
 
 ; end of commands
 
-; boring functions
+; boring functions!
+
+; NOTE that most are put into the func module
+; but those that are poking global vars are
+; still here
 
 ; print the room text
 (define (ptext)
@@ -149,15 +159,6 @@
     ((zero? (matrix-ref mmaapp x y)) '#f)
     ((not (zero? (matrix-ref mmaapp x y))) (void))))
 
-; note if the check is the same size as the map
-(define (checkbounds x y)
-  (cond
-    ((< x 0) '#f)
-    ((< y 0) '#f)
-    ((> x 16) '#f)
-    ((> y 7) '#f)
-    ('#t)))
-
 ; higher-order help for lookahead+checkbounds
 ; returns #t or #f if room is valid
 (define (cbla v w)
@@ -165,50 +166,14 @@
     (checkbounds v w)
     (lookahead v w)))
 
-; matrix-ref returns the jth element of the ith row.
-(define (matrix-ref m i j)
-  (vector-ref (vector-ref m i) j))
-
-(define (checkeof x)
-  (if (eof-object? x)
-    (quit)
-    x))
-
-(define (in item list)
-  ;;; Tells you if an item is in a list or not
-  (cond ((member item list) #t) (else #f)))
-
-(define (set-alist-value key new-value alist)
-  ;;; Return an alist with the updated value
-  (alist-cons key (list new-value) (alist-delete key alist)))
-
-(define (value item alist)
-  ;;; Returns the value from an alist
-  (cadr (assoc item alist)))
-
-(define (get-command)
-  ;;; Gets the command from the user and turns it into a list
-  (map string->symbol (string-tokenize (string-downcase (checkeof (read-line))))))
-
-(define (run-command command)
-  ;;; Run the users command.
-  (if (> (length command) 0)
-      (eval command)
-      (display "Sorry I didn't understand that")))
-
-(define (filter-command command filter_list)
-  ;;; Removes all words in the command that are not in the filter list. Preserves order of remaining words.
-  (filter
-    (lambda (x)
-      (in x filter_list))
-    command))
-
 (define (repl)
   ;;; The REPL for user commands
   (let ((input (filter-command (get-command) user-commands)))
     (run-command input)
     (display "\n> ")
     (repl)))
+
+; end of boring
 
 ; main loop here
 (define (main)

@@ -1,6 +1,8 @@
 ; the boring engine shite for the Lycosurian Mysteries
 ; text adventure :^)
 
+; NOTE beware of procedures that poke global vars
+
 ; https://tildas.org.
 
 (module func
@@ -21,7 +23,8 @@
                 (chicken io)
                 (srfi-1)
                 (srfi-13))
- 
+
+        ; note if the check is the same size as the map
         (define (checkbounds x y)
           (cond
             ((< x 0) '#f)
@@ -30,6 +33,7 @@
             ((> y 7) '#f)
             ('#t)))
 
+        ; matrix-ref returns the jth element of the ith row.
         (define (matrix-ref m i j)
           (vector-ref (vector-ref m i) j))
 
