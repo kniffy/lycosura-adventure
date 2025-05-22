@@ -33,9 +33,6 @@
   (compiling
     (declare (uses text))))
 
-(import (chicken io)
-	(srfi-1)
-	(srfi-13))
 (import func)
 
 ; global vars
