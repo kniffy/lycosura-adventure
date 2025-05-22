@@ -92,38 +92,23 @@
 (define (help)
   (print "You can\n" user-commands))
 
-; directions
-; todo we can do better :^)
-(define (go dir)
-  ; NESW 0,1,2,3 respectively
-  (cond ((= dir 0)
-         (if (cbla (sub1 *posX*) *posY*)
-             (begin (set! *posX* (sub1 *posX*))
-                    (ptext))
-             (display "cant go north")))
+; low-level movement procedure
+; we take the relative offsets as input
+; eg. north -> -1 0
+(define (go p q)
+  (let ([r (+ *posX* p)] [s (+ *posY* q)])
+    (if (cbla r s)
+        (begin (set! *posX* r)
+               (set! *posY* s)
+               (ptext))
+        (display "can't go that way"))))
 
-        ((= dir 1)
-         (if (cbla *posX* (add1 *posY*))
-             (begin (set! *posY* (add1 *posY*))
-                    (ptext))
-             (display "cant go east")))
-
-        ((= dir 2)
-         (if (cbla (add1 *posX*) *posY*)
-             (begin (set! *posX* (add1 *posX*))
-                    (ptext))
-             (display "cant go south")))
-
-        ((= dir 3)
-         (if (cbla *posX* (sub1 *posY*))
-             (begin (set! *posY* (sub1 *posY*))
-                    (ptext))
-             (display "cant go west")))))
-
-(define (north) (go 0))
-(define (east) (go 1))
-(define (south) (go 2))
-(define (west) (go 3))
+; higher-level movement procedures
+; observe how we define our directions here
+(define (north) (go -1 0))
+(define (east) (go 0 1))
+(define (south) (go 1 0))
+(define (west) (go 0 -1))
 
 ; procedure to print the extra text
 ; uhh should we have text var names based on position?
@@ -152,19 +137,12 @@
     (display (matrix-ref mmaapp *posX* *posY*))
     (display "no text here?")))
 
-; saves us when theres not text set for the area
-(define (lookahead x y)
-  (cond
-    ((string? (matrix-ref mmaapp x y)) '#t)
-    ((zero? (matrix-ref mmaapp x y)) '#f)
-    ((not (zero? (matrix-ref mmaapp x y))) (void))))
-
 ; higher-order help for lookahead+checkbounds
 ; returns #t or #f if room is valid
 (define (cbla v w)
   (and
     (checkbounds v w)
-    (lookahead v w)))
+    (lookahead v w mmaapp)))
 
 (define (repl)
   ;;; The REPL for user commands

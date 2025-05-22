@@ -6,8 +6,7 @@
 ; https://tildas.org.
 
 (module func
-        (
-         checkbounds
+        (checkbounds
          matrix-ref
          checkeof
          in
@@ -16,7 +15,7 @@
          get-command
          run-command
          filter-command
-         )
+         lookahead)
 
         (import (scheme)
                 (chicken base)
@@ -32,6 +31,13 @@
             ((> x 16) '#f)
             ((> y 7) '#f)
             ('#t)))
+
+        ; saves us when theres not text set for the area
+        (define (lookahead x y map)
+          (cond
+            ((string? (matrix-ref map x y)) '#t)
+            ((zero? (matrix-ref map x y)) '#f)
+            ((not (zero? (matrix-ref map x y))) (void))))
 
         ; matrix-ref returns the jth element of the ith row.
         (define (matrix-ref m i j)
