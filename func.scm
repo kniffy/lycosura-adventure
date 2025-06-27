@@ -6,7 +6,9 @@
 ; https://tildas.org.
 
 (module func
-        (checkbounds
+        (termsize
+         lyco-display
+         checkbounds
          matrix-ref
          checkeof
          in
@@ -17,11 +19,26 @@
          filter-command
          lookahead)
 
-        (import (scheme)
-                (chicken base)
-                (chicken io)
-                (srfi-1)
-                (srfi-13))
+        (import scheme
+                chicken.base
+                chicken.io
+                chicken.port
+                fmt
+                srfi-1
+                srfi-13)
+
+        (define *h*)
+        (define *w*)
+
+        ; sets globar vars
+        (define (termsize)
+          (set!-values (*h* *w*) (terminal-size (current-output-port))))
+
+        ; currently breaks deliberate white space
+        (define (lyco-display str)
+          (begin
+            (termsize)
+            (fmt #t (with-width *w* (wrap-lines str)))))
 
         ; note if the check is the same size as the map
         (define (checkbounds x y)

@@ -131,7 +131,7 @@
 ; print the room text
 (define (ptext)
   (if (string? (matrix-ref mmaapp *posX* *posY*))
-    (display (matrix-ref mmaapp *posX* *posY*))
+    (lyco-display (matrix-ref mmaapp *posX* *posY*))
     (display "no text here?")))
 
 ; higher-order help for lookahead+checkbounds
