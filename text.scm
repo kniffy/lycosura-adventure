@@ -18,24 +18,13 @@
 (declare (unit text))
 
 (define banner #<<END
-DEVELOPMENT VERSION CIRCA JUN. 2025
+LYCOSURIAN MYSTERIES DEVELOPMENT VERSION CIRCA JUN. 2025
 
-There was a city said to be the oldest in the world: Lycosura.
-The most notable remains of it are the ruins of the Temple of Despoina
+There once was a temple, in the oldest city in the world. You're on your way
+there to see what's left.
 
-... beside the temple of the Mistress on the right is what is called the Hall,
-where the Arcadians celebrate Mysteries, and sacrifice to the Mistress many
-victims in generous fashion. Every man of them sacrifices what he possesses.
-But he does not cut the throats of the victims, as is done in other
-sacrifices; each man chops off a limb of the sacrifice, just that which
-happens to come to hand. This Mistress the Arcadians worship more than any
-other god, declaring that she is a daughter of Poseidon and Demeter. Mistress
-is her surname among the many, just as they surname Demeter's daughter by Zeus
-the Maiden. But whereas the real name of the Maiden is Persephone, as Homer
-and Pamphos before him say in their poems, the real name of the Mistress I am
-afraid to write to the uninitiated
-
-  -Pausanias
+They worshipped the Mistress, daughter of Posideon and Demeter, her real name
+only for the initiated..
 
 END
 )
@@ -55,39 +44,37 @@ Sometimes you'll have extra thoughts in your MIND
 END
 )
 
-(define text01 "a")
-
-(define text01b #<<END
-Why even go down this? It doesn't seem scary, just pointless.
-Turning over rocks can never lead to good, as far as I know.
-
-All the paths I could have gone down, yet I'm on this one somehow;
-what were down those other roads?
-
+(define text01 #<<END
+Trees surround the path, you cannot see the horizon.
 END
 )
 
-(define text02 "")
+(define text02 #<<END
+You continue upward along the path. Several birds are disturbed and they fly off.
+END
+)
 
 (define text03 #<<END
-A turn is in the distance, still can't see beyond though.
+A turn is in the distance, but you can't see beyond.
 
 END
 )
 
 (define text04 #<<END
-You're at the curve, the road continues south.. Maybe turn back?
+The road turns south - maybe turn back, this is too much, nobody even knows you're here,
+and nobody could see you if passing along the road if something happens..
 
 END
 )
 
 (define text05 #<<END
-Plans never seem to work out, but we'll get where we're going, one step at a
-time. There's freedom in that, moving forward, casting aside weights.
+Why go down this? How did we end up here anyway? No one else will be here.
 
-There's so much to dig up from the past - sparkling rubies or horrifying shit
-that ought to be forgotten. Was there a sign back there? How far have we gone?
+END
+)
 
+(define text05b #<<END
+Running away or finding something - is there a difference
 END
 )
 
