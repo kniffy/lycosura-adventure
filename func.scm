@@ -6,7 +6,8 @@
 ; https://tildas.org.
 
 (module func
-        (termsize
+        (ld-chain
+         termsize
          lyco-display
          checkbounds
          matrix-ref
@@ -26,6 +27,9 @@
                 fmt
                 srfi-1
                 srfi-13)
+
+        (define (ld-chain . str)
+          (map lyco-display str))
 
         (define *h*)
         (define *w*)

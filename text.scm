@@ -17,7 +17,7 @@
 (declare (unit text))
 
 (define banner #<<END
-LYCOSURIAN MYSTERIES DEVELOPMENT VERSION CIRCA JUN. 2025
+LYCOSURIAN MYSTERIES DEVELOPMENT VERSION CIRCA JUL. 2025
 END
 )
 
@@ -33,19 +33,15 @@ only for the initiated..
 END
 )
 
-(define text00 #<<END
+(define intro2 #<<END
 You're at the start of a winding road.
 You can see it goes uphill, but there are trees blocking all view of what's
 beyond.
-
-Up there somewhere are the ruins.
-
-Type [NORTH, SOUTH, EAST, WEST] to move, or EXIT to give up now.
-
-Sometimes you'll have extra thoughts in your MIND
-
 END
 )
+
+(define intro3 "Type [NORTH, SOUTH, EAST, WEST] to move, or EXIT to give up now.")
+(define intro4 "Sometimes you'll have extra thoughts in your MIND")
 
 (define text01 #<<END
 Trees surround the path, you cannot see the horizon.

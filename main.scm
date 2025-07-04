@@ -153,10 +153,7 @@
 ; main loop here
 (define (main)
   (begin
-    (lyco-display banner)
-    (lyco-display intro0)
-    (lyco-display intro1)
-    (lyco-display text00)
+    (ld-chain banner intro0 intro1 intro2 intro3 intro4)
     (display "> ")
     (repl)))
 
