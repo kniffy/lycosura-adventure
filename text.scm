@@ -14,23 +14,26 @@
 ; we meet despina in a dream
 
 ; please mind the newlines :^)
-
 (declare (unit text))
 
 (define banner #<<END
 LYCOSURIAN MYSTERIES DEVELOPMENT VERSION CIRCA JUN. 2025
+END
+)
 
+(define intro0 #<<END
 There once was a temple, in the oldest city in the world. You're on your way
 there to see what's left.
+END
+)
 
+(define intro1 #<<END
 They worshipped the Mistress, daughter of Posideon and Demeter, her real name
 only for the initiated..
-
 END
 )
 
 (define text00 #<<END
-
 You're at the start of a winding road.
 You can see it goes uphill, but there are trees blocking all view of what's
 beyond.

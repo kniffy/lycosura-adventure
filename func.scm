@@ -38,7 +38,7 @@
         (define (lyco-display str)
           (begin
             (termsize)
-            (fmt #t (with-width *w* (wrap-lines str)))))
+            (fmt #t (with-width *w* (wrap-lines str)) nl )))
 
         ; note if the check is the same size as the map
         (define (checkbounds x y)

@@ -145,7 +145,7 @@
   ;;; The REPL for user commands
   (let ((input (filter-command (get-command) user-commands)))
     (run-command input)
-    (display "\n> ")
+    (display "> ")
     (repl)))
 
 ; end of boring
@@ -153,9 +153,11 @@
 ; main loop here
 (define (main)
   (begin
-    (display banner)
-    (display text00)
-    (display "\n> ")
+    (lyco-display banner)
+    (lyco-display intro0)
+    (lyco-display intro1)
+    (lyco-display text00)
+    (display "> ")
     (repl)))
 
 (main)
