@@ -98,7 +98,7 @@
         (begin (set! *posX* r)
                (set! *posY* s)
                (ptext))
-        (display "can't go that way"))))
+        (print "can't go that way"))))
 
 ; higher-level movement procedures
 ; observe how we define our directions here
@@ -112,13 +112,13 @@
 (define (mind . location)
   (case (length location)
     ((0) ;;; Assume the player is asking about the current room
-     (display "zero"))
+     (print "zero"))
     ((1) ;;; Describe the item that the player is looking at.
-     (display "one"))))
+     (print "one"))))
 
 ; TODO what should xyzzy do?
 (define (xyzzy)
-  (display "you did the thing!"))
+  (print "you did the thing!"))
 
 ; end of commands
 
@@ -145,7 +145,7 @@
   ;;; The REPL for user commands
   (let ((input (filter-command (get-command) user-commands)))
     (run-command input)
-    (display "> ")
+    (print* "> ")
     (repl)))
 
 ; end of boring
@@ -154,7 +154,7 @@
 (define (main)
   (begin
     (ld-chain banner intro0 intro1 intro2 intro3 intro4)
-    (display "> ")
+    (print* "> ")
     (repl)))
 
 (main)
