@@ -6,9 +6,9 @@
 ; https://tildas.org.
 
 (module func
-        (ld-chain
-         termsize
+        (termsize
          lyco-display
+         ld-chain
          checkbounds
          matrix-ref
          checkeof
@@ -28,9 +28,6 @@
                 srfi-1
                 srfi-13)
 
-        (define (ld-chain . str)
-          (map lyco-display str))
-
         (define *h*)
         (define *w*)
 
@@ -43,6 +40,10 @@
           (begin
             (termsize)
             (fmt #t (with-width *w* (wrap-lines str)) nl )))
+
+        ; for displaying lots of things in one expression
+        (define (ld-chain . str)
+          (map lyco-display str))
 
         ; note if the check is the same size as the map
         (define (checkbounds x y)
